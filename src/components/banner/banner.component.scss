@@ -1,0 +1,90 @@
+.banner-component {
+  ion-slides {
+    --bullet-background: var(--ion-color-primary);
+    --bullet-background-active: var(--ion-color-secondary);
+    --progress-bar-background: var(--ion-color-secondary-contrast);
+    --progress-bar-background-active: var(--ion-color-secondary);
+    min-height: 180;
+    //border: 1px solid var(--ion-color-primary);
+  }
+
+  .squareBullets {
+    .swiper-pagination-bullet {
+      width: 12px;
+      border-radius: 3px;
+    }
+  }
+  .bottomBulletsWhiteBackground {
+    .swiper-pagination-bullet {
+      padding: 6px;
+    }
+    .swiper-pagination-bullets {
+      position: unset;
+      margin-top: 10px;
+      margin-left: 50%;
+      margin-right: auto;
+    }
+  }
+  .progressBar {
+    .swiper-pagination-progressbar {
+      top: auto;
+      bottom: 0;
+    }
+  }
+
+  .verticalRightBullets {
+    .swiper-pagination-bullet {
+      display: block;
+      margin: 5px;
+      border-radius: 3px;
+      padding: 8px 0;
+    }
+    .swiper-pagination-bullets {
+      left: auto;
+      right: 5px;
+      width: auto;
+      bottom: auto;
+      margin: 0;
+      top: 50%;
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
+    }
+  }
+
+  .verticalLeftBullets {
+    .swiper-pagination-bullet {
+      display: block;
+      margin: 5px;
+      border-radius: 3px;
+      padding: 8px 0;
+    }
+    .swiper-pagination-bullets {
+      left: 5px;
+      //right: 5px;
+      width: auto;
+      bottom: auto;
+      margin: 0;
+      top: 50%;
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
+    }
+  }
+
+  .numberBullets {
+    .swiper-pagination-bullet {
+      width: 20px;
+      height: 20px;
+      text-align: center;
+      line-height: 20px;
+      font-size: 12px;
+      opacity: 1;
+      color: var(--ion-color-medium-contrast);
+      background: var(--ion-color-medium);
+    }
+    .swiper-pagination-bullet-active {
+      color: var(--ion-color-secondary-contrast);
+      background: var(--ion-color-secondary);
+    }
+  }
+
+}

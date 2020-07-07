@@ -1,0 +1,193 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      {{'Order Detail'| translate }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <h4><b>{{'Shipping Address'|translate}}</b></h4>
+    </ion-card-header>
+    <ion-card-content>
+      {{order.shipping.address_1+', '+order.shipping.city+', '+order.shipping.state+' '+order.shipping.postcode+',
+      '+order.shipping.country}}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <h4><b>{{'Billing Address'|translate}}</b></h4>
+    </ion-card-header>
+    <ion-card-content>
+      {{order.billing.address_1+', '+order.billing.city+', '+order.billing.state+' '+order.billing.postcode+',
+      '+order.billing.country}}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngFor="let s of order.shipping_lines">
+    <ion-card-header>
+      <h4><b>{{'Shipping Method'|translate}}</b></h4>
+    </ion-card-header>
+    <ion-card-content>
+      {{s.method_title}}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <h4><b>{{'Shipping Total'|translate}}</b></h4>
+    </ion-card-header>
+    <ion-card-content>
+      {{addCurrecny(order.shipping_total)}}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="order-product">
+    <ion-card-header>
+      {{'Products'|translate}}
+    </ion-card-header>
+    <ion-card-content *ngFor="let product of order.line_items">
+      <ion-row>
+        <ion-col>
+          <h3>{{product.name}}
+            <br>
+            <small>{{product.categories_name}}</small>
+          </h3>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="ion-text-left" size="6">{{'Price' |translate}}&nbsp;:&nbsp;</ion-col>
+        <ion-col class="ion-text-right" size="6">{{addCurrecny(product.price)}}</ion-col>
+      </ion-row>
+
+      <ion-row *ngFor="let att of product.meta_data">
+        <ion-col size="6">{{att.key}}&nbsp;:</ion-col>
+        <ion-col size="6">{{att.value}}</ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col class="ion-text-left" size="6">{{'Quantity'|translate}}&nbsp;:&nbsp;</ion-col>
+        <ion-col class="ion-text-right" size="6">{{product.quantity}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="ion-text-left" size="6">
+          <strong>{{'Total' |translate}}</strong>&nbsp;:&nbsp;</ion-col>
+        <ion-col class="ion-text-right" size="6">
+          <strong>{{addCurrecny(product.total)}}</strong>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      {{'Price Detail'|translate}}
+    </ion-card-header>
+    <ion-card-content>
+      <ion-row>
+        <ion-col size="6">
+          {{'Shipping'|translate}} {{'Tax'|translate}}
+        </ion-col>
+        <ion-col class="ion-text-right" col-6>
+          {{addCurrecny(order.shipping_tax) }}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          {{'Shipping'|translate}}
+        </ion-col>
+        <ion-col class="ion-text-right" size="6">
+          {{addCurrecny(order.shipping_total)}}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          {{'Tax'|translate}}
+        </ion-col>
+        <ion-col class="ion-text-right" size="6">
+          {{addCurrecny(order.discount_total)}}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          {{'Total'|translate}}
+        </ion-col>
+        <ion-col class="ion-text-right" size="6">
+          <strong>{{addCurrecny(order.total)}}</strong>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+  <ion-card *ngIf="order.coupon_lines!=0">
+    <ion-card-header>
+      {{'Coupons Applied'|translate}}
+    </ion-card-header>
+    <ion-card-content>
+      <ion-row>
+        <ion-col col-6>
+          {{'Coupon Code'|translate}}
+        </ion-col>
+        <ion-col col-6 class="ion-text-right">
+          {{'Coupon Price'|translate}}
+        </ion-col>
+      </ion-row>
+      <ion-row *ngFor="let c of order.coupon_lines">
+        <ion-col col-6>
+          {{c.code}}
+        </ion-col>
+        <ion-col col-6 class="ion-text-right">
+          {{addCurrecny(c.discount)}}
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="order.customer_note!=''">
+    <ion-card-header>
+      {{'Order Notes'|translate}}
+    </ion-card-header>
+    <ion-card-content>
+      {{order.customer_note}}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="getTrackingId()!=''">
+    <ion-card-header>
+      {{'Track Order'|translate}}
+    </ion-card-header>
+    <ion-card-content>
+      <ion-row>
+        <ion-col col-6>
+          {{getTrackingId()}}
+        </ion-col>
+        <ion-col col-6 class="ion-text-right">
+          <ion-button color="secondary" icon-end (click)="openTrackingPage()">{{'Track'|translate}}
+            <ion-icon name="locate"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      <h4><b>{{'Payment Method'|translate}}</b></h4>
+    </ion-card-header>
+    <ion-card-content>
+      {{order.payment_method_title}}
+    </ion-card-content>
+  </ion-card>
+
+
+
+  <ion-item
+    *ngIf="order.status!='cancelled' && order.status!='completed' && order.status!='refunded' && order.status!='failed' && order.status!='processing'">
+    <ion-button *ngIf="config.orderCancelButton" color="danger" expand="block" (click)="cancelOrder()">
+      {{'Cancel Order'|translate}}
+    </ion-button>
+  </ion-item>
+</ion-content>

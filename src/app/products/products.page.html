@@ -1,0 +1,157 @@
+<ion-header>
+  <!-- <ion-toolbar>
+
+    <ion-title> {{'Shop'| translate }} </ion-title>
+
+  </ion-toolbar> -->
+
+  <ion-toolbar *ngIf="!config.appNavigationTabs">
+    <ion-buttons slot="start">
+      <ion-back-button icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title> {{'Shop'| translate }} </ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" routerLink="/search" routerDirection="forward">
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" routerLink="/cart" routerDirection="forward">
+        <ion-icon name="basket"></ion-icon>
+        <ion-badge color="secondary">{{shared.cartTotalItems()}}</ion-badge>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <ion-toolbar class="segmentToolbar" *ngIf="!config.appNavigationTabs">
+    <ion-slides [options]="sliderConfig" [class.disable]="products[0]==1">
+      <ion-slide [class.selected]="selectedTab==''" *ngIf="shared.allCategories!=null" (click)="changeTab('')">
+        {{'All'|translate}}</ion-slide>
+      <ion-slide [class.selected]="selectedTab==c.id" *ngFor="let c of shared.allCategories" (click)="changeTab(c)">
+        {{c.name}}
+      </ion-slide>
+    </ion-slides>
+  </ion-toolbar>
+
+
+  <ion-toolbar class="segmentToolbar" *ngIf="config.appNavigationTabs">
+    <ion-buttons slot="start">
+      <ion-back-button icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+    <ion-slides [options]="sliderConfig" [class.disable]="products[0]==1">
+      <ion-slide [class.selected]="selectedTab==''" *ngIf="shared.allCategories!=null" (click)="changeTab('')">
+        {{'All'|translate}}</ion-slide>
+      <ion-slide [class.selected]="selectedTab==c.id" *ngFor="let c of shared.allCategories" (click)="changeTab(c)">
+        {{c.name}}
+      </ion-slide>
+    </ion-slides>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollEvents]="true" (ionScroll)="onScroll($event)" id="productContent">
+  <ion-grid *ngIf="productView=='grid'" class="ion-no-padding">
+    <ion-row class="ion-no-padding">
+      <ion-col *ngFor="let p of products" size="6" class="ion-no-padding">
+        <app-product [data]="p" [type]="'normal'"></app-product>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-list class="list-view" *ngIf="productView=='list'">
+    <span *ngFor="let p of products">
+      <app-product [data]="p" [type]="'list'"></app-product>
+    </span>
+  </ion-list>
+  <ion-col *ngIf="products.length==0 && loadingServerData" size="12" class="animated fadeIn">
+    <h6 class="ion-text-center">{{'No Products Found!'|translate}}</h6>
+  </ion-col>
+
+
+  <!-- infinite scroll -->
+  <ion-infinite-scroll threshold="10px" #infinite (ionInfinite)="getFilterdProducts('from html')">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
+<ion-fab vertical="bottom" horizontal="end" *ngIf="scrollTopButton">
+  <ion-fab-button (click)="scrollToTop()">
+    <ion-icon name="arrow-up"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+<ion-footer>
+  <ion-toolbar color="light">
+    <ion-item (click)="openSortBy()" no-lines>
+      <ion-label>
+        <p>{{"Sort Products"|translate}}</p>
+        <h3 color="secondary">
+          {{sortOrder| translate}}<ion-icon name="arrow-up"></ion-icon>
+        </h3>
+      </ion-label>
+    </ion-item>
+
+    <ion-buttons slot="end" color="light">
+      <ion-button (click)="changeLayout()">
+        <ion-icon name="ios-list" [name]="productView=='grid'? 'list' : 'apps'"></ion-icon>
+      </ion-button>
+      <ion-button (click)="resetFilters()" *ngIf="applyFilter">
+        <ion-icon name="refresh"></ion-icon>
+      </ion-button>
+      <ion-button (click)="toggleMenu()">
+        <ion-icon name="funnel"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
+
+<ion-menu side="end" menuId="menu2" contentId="productContent">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button slot="icon-only" (click)="toggleMenu()">
+          <ion-icon name="close"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title>{{"Filters"|translate}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="side-menu ion-no-padding">
+    <ion-card *ngIf="showHidePriceRange()">
+      <ion-card-header>
+        <ion-card-title>{{'by'| translate}}&nbsp;{{'Price'| translate}}</ion-card-title>
+      </ion-card-header>
+      <ion-item>
+        <ion-range dualKnobs="true" pin="true" (ionBlur)="applyFilters()" [(ngModel)]="price" [min]="minAmount"
+          [max]="maxAmount">
+          <ion-label slot="start">{{price.lower}}</ion-label>
+          <ion-label slot="end">{{price.upper}}</ion-label>
+        </ion-range>
+      </ion-item>
+    </ion-card>
+    <ion-card *ngIf="on_sale=='True' || featured=='True'">
+      <ion-card-header>
+        <ion-card-title>{{'by'| translate}}&nbsp;{{'Sale'| translate}}/{{'Featured'| translate}}
+        </ion-card-title>
+      </ion-card-header>
+      <ion-item *ngIf="on_sale=='True'">
+        <ion-label>{{'Sale'| translate}}</ion-label>
+        <ion-checkbox [(ngModel)]="filterOnSale" (click)="fillFilterArray($event,'sale')"></ion-checkbox>
+      </ion-item>
+      <ion-item *ngIf="featured=='True'">
+        <ion-label>{{'Featured'| translate}}</ion-label>
+        <ion-checkbox [(ngModel)]="filterFeatured" (click)="fillFilterArray($event,'featured')"></ion-checkbox>
+      </ion-item>
+    </ion-card>
+
+    <!-- <h3>{{'Filter by attributes'| translate}}</h3> -->
+    <ion-card *ngFor="let a of attributes">
+      <ion-card-header>
+        <ion-card-title>{{'by'| translate}}&nbsp;{{a.attribute_name}}</ion-card-title>
+      </ion-card-header>
+      <ion-item *ngFor="let v of a.attribute_terms">
+        <ion-label>{{v.name}}</ion-label>
+        <ion-checkbox [(ngModel)]="v.value" [checked]="checkAttributeSelected(a,v)" (click)="selectAttribute(a,v)">
+        </ion-checkbox>
+      </ion-item>
+    </ion-card>
+
+
+  </ion-content>
+</ion-menu>

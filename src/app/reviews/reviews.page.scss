@@ -1,0 +1,130 @@
+.review-page {
+  background-color: white;
+  .rating-gird {
+    h4 {
+      //font-size: $h2-font-size;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    h1 {
+      font-size: 30px;
+      margin-top: 0;
+      text-align: center;
+
+      .icon {
+      }
+    }
+    h3 {
+      //font-size: $h2-font-size;
+      color: var(--ion-color-secondary);
+      margin-bottom: 0;
+      text-align: center;
+    }
+    ul {
+      padding-left: 15px;
+      margin-bottom: 0;
+      border-left: 1px solid #ccc;
+      li {
+        display: flex;
+        align-items: center;
+        font-size: 16px;
+        list-style: none;
+        position: relative;
+        .icon {
+          margin-left: 5px;
+        }
+        .block {
+          height: 11px;
+          display: inline-block;
+          margin-left: 7px;
+          position: relative;
+          z-index: 2;
+        }
+        &::after {
+          content: "";
+          background-color: #f4f4f4;
+          height: 11px;
+          width: calc(100% - 36px);
+          position: absolute;
+          left: 36px;
+          z-index: 1;
+          top: 5px;
+        }
+      }
+    }
+    .button {
+      min-height: 45px;
+    }
+  }
+  .rating-users {
+    .item {
+      background-color: transparent;
+      align-items: flex-start;
+
+      ion-avatar {
+        margin-top: 10px;
+      }
+      h2 {
+        font-weight: bold;
+      }
+      .product-rating {
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-left: 0;
+        li {
+          display: flex;
+          align-items: center;
+
+          h6 {
+            margin-top: 5px;
+            margin-left: 10px;
+          }
+        }
+      }
+      p {
+        p {
+          margin-top: 2px;
+          white-space: normal;
+        }
+      }
+    }
+  }
+
+  .product-rating {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    .stars-outer {
+      display: inline-block;
+      position: relative;
+      font-size: 25px;
+      &::before {
+        content: "\2606\2606\2606\2606\2606";
+        color: #ccc;
+      }
+      .stars-inner {
+        font-size: 25px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        white-space: nowrap;
+        overflow: hidden;
+
+        &::before {
+          content: "\2605\2605\2605\2605\2605";
+          color: #f8ce0b;
+        }
+      }
+    }
+    h6 {
+      color: cornflowerblue;
+      margin-left: 15px;
+    }
+  }
+
+  .animate {
+    animation: fadeInRight 0.75s;
+  }
+}

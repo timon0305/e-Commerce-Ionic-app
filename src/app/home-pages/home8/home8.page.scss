@@ -1,0 +1,46 @@
+ion-content {
+  .swiper-slide {
+    width: 40%;
+  }
+  app-product {
+    width: 100%;
+  }
+  ion-slides {
+    ion-slide {
+      &:last-child {
+        height: auto;
+      }
+    }
+  }
+  ion-item {
+    --inner-padding-end: 0;
+    --padding-start: 4px;
+    padding-top: 3px;
+    margin-bottom: -15px;
+    ion-icon {
+      margin-right: 5px;
+      zoom: 0.9;
+      color: var(--ion-color-primary);
+    }
+    ion-label {
+      p {
+        font-size: 13.5px;
+      }
+    }
+  }
+  ion-grid {
+    ion-row {
+      padding-right: 10px;
+      ion-col {
+        text-align: center;
+        ion-icon {
+          color: var(--ion-color-primary);
+        }
+        p {
+          margin-top: 2px;
+          margin-bottom: 2px;
+        }
+      }
+    }
+  }
+}

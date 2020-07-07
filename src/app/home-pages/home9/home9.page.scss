@@ -1,0 +1,32 @@
+app-product {
+  width: 100%;
+}
+.swiper-slide {
+  width: 40%;
+}
+ion-slides {
+  ion-slide {
+    &:last-child {
+      height: auto;
+    }
+  }
+}
+ion-segment {
+  ion-segment-button {
+    --indicator-color: lightgray;
+    --indicator-color-checked: var(--ion-color-primary);
+    --color-checked: var(--ion-color-primary);
+    font-size: 0.75rem;
+  }
+}
+ion-fab {
+  position: fixed;
+  ion-fab-button {
+    --background: var(--ion-color-primary);
+  }
+}
+ion-grid{
+  ion-row{
+      margin-right: 10px;
+  }
+}

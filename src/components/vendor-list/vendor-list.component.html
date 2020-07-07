@@ -1,0 +1,27 @@
+<div *ngIf="config.showVendorInfo || config.showWcVendorInfo">
+  <ion-row class="top-icon-header">
+    <ion-button fill="clear">
+      <ion-icon slot="start" name="person"></ion-icon>
+      {{'Featured Vendors'|translate}}
+    </ion-button>
+  </ion-row>
+  <div *ngIf="shared.vendors.length!=0 && shared.vendors[0]!=1" class="module">
+    <!-- vendor list swipe slider -->
+    <ion-slides [options]="sliderConfig">
+      <ion-slide *ngFor="let c of shared.vendors" (click)="openVendorPage(c)" class="animate-item">
+        <ion-card>
+          <img src="{{c.banner}}" />
+          <p>{{c.name}}</p>
+        </ion-card>
+      </ion-slide>
+    </ion-slides>
+  </div>
+  <!-- skeleton text until data not loaded -->
+  <ion-slides [options]="sliderConfig" *ngIf="shared.vendors[0]==1">
+    <ion-slide *ngFor="let c of shared.vendors" (click)="openVendorPage(c)" class="animate-item">
+      <ion-card *ngIf="c==1">
+        <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+</div>

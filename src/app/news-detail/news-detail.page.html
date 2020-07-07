@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+        {{post.title.rendered}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-img src="{{post.image}}" *ngIf="post.image"></ion-img>
+
+  <h2>{{post.title.rendered}}
+    <br>
+    <small>
+      <ion-icon name="clock"></ion-icon>{{post.date}}
+    </small>
+  </h2>
+  <p [innerHTML]="post.content.rendered"></p>
+</ion-content>

@@ -1,0 +1,43 @@
+.sliding-tabs {
+    .first-slide {
+        width: 80px !important;
+    }
+    ion-slides {
+        background-color: var(--ion-background-color);
+        ion-slide {
+            img {
+                width: 32px;
+                height: 36px;
+                padding: 6px;
+                margin: auto;
+            }
+            height: auto;
+            display: inline-grid;
+            text-align: center;
+            width: auto;
+            padding-left: 10px;
+            padding-right: 10px;
+            font-size: 12px;
+            border-top-width: 0;
+            border-left-width: 0;
+            border-right-width: 0;
+            border-bottom-style: solid;
+            border-bottom-width: 2px;
+            border-bottom-color: transparent;
+            color: var(--ion-text-color);
+            text-transform: uppercase;
+            min-height: 56px;
+        }
+        .selected {
+            border-bottom-color: var(--ion-color-danger-tint)!important;
+            background-color: var(accent-color)!important;
+            color: var(--ion-color-danger-tint)!important;
+        }
+    }
+
+    ion-grid {
+        ion-row {
+            margin-right: 10px;
+        }
+    }
+}

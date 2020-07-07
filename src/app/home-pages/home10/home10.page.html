@@ -1,0 +1,98 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-menu-button slot="start" *ngIf="!config.appNavigationTabs">
+      <ion-icon name="menu"></ion-icon>
+    </ion-menu-button>
+    <ion-title>
+      <ion-img src="assets/logo_header.png" alt="logo"></ion-img>
+    </ion-title>
+    <ion-buttons slot="end" *ngIf="!config.appNavigationTabs">
+      <ion-button fill="clear" routerLink="/search" routerDirection="forward">
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" routerLink="/cart" routerDirection="forward">
+        <ion-icon name="basket"></ion-icon>
+        <ion-badge color="secondary">{{shared.cartTotalItems()}}</ion-badge>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row class="top-icon-header">
+    <ion-button fill="clear">
+      <ion-icon slot="start" name="apps"></ion-icon>
+      {{'Categories' | translate }}
+    </ion-button>
+    <ion-button id="second" fill="clear" (click)="openCategoryPage()">
+      <ion-icon slot="end" name="caret-forward"></ion-icon>
+      {{ 'Shop More' | translate }}
+    </ion-button>
+  </ion-row>
+  <!-- categories component -->
+  <app-categories [type]="'withName'"></app-categories>
+
+  <!-- For Banner -->
+  <app-banner></app-banner>
+
+  <!-- For Vendor List -->
+  <app-vendor-list></app-vendor-list>
+
+  <ion-row class="top-icon-header">
+    <ion-button fill="clear">
+      <ion-icon slot="start" name="albums"></ion-icon>
+      {{'Newest Products'|translate}}
+    </ion-button>
+    <ion-button id="second" fill="clear" (click)="openProducts('newest')">
+      <ion-icon slot="end" name="caret-forward"></ion-icon>
+      {{ 'Shop More' | translate }}
+    </ion-button>
+  </ion-row>
+
+  <!-- Newest Products swipe slider -->
+  <ion-slides [options]="sliderConfig">
+    <ion-slide *ngFor="let p of shared.tab1">
+      <app-product [data]="p" [type]="'normal'"></app-product>
+    </ion-slide>
+  </ion-slides>
+
+  <!-- For Segments Products -->
+  <ion-segment [(ngModel)]="segments">
+    <ion-segment-button value="sale">{{ 'On Sale' | translate }} </ion-segment-button>
+    <ion-segment-button value="mostLiked"> {{ 'Featured' | translate }}</ion-segment-button>
+  </ion-segment>
+
+  <div [ngSwitch]="segments">
+    <ion-grid class="ion-no-padding" *ngSwitchCase="'sale'">
+      <ion-row class="row-segment ion-no-padding">
+        <ion-col *ngFor="let p of shared.tab2" size="6" class="ion-no-padding">
+          <app-product [data]="p" [type]="'normal'"></app-product>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="ion-text-center">
+        <ion-col>
+          <ion-button fill="clear" color="secondary" (click)="openProducts('sale')">
+            {{ 'Shop More' | translate}}
+            <ion-icon name="caret-forward"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid class="ion-no-padding" *ngSwitchCase="'mostLiked'">
+      <ion-row class="ion-no-padding">
+        <ion-col *ngFor="let p of shared.tab3" size="6" class="ion-no-padding">
+          <app-product [data]="p" [type]="'normal'"></app-product>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-text-center">
+        <ion-col>
+          <ion-button fill="clear" color="secondary" (click)="openProducts('featured')">{{ 'Shop More' | translate}}
+            <ion-icon name="caret-forward"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

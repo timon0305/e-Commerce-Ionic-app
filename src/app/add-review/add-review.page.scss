@@ -1,0 +1,35 @@
+
+ion-content {
+  h4 {
+    padding-left: 10px;
+  }
+  ion-grid {
+    ion-row {
+      ion-col {
+        h5 {
+          padding-left: 10px;
+        }
+        ion-icon {
+          zoom: 1.9;
+          color: #d9d027;
+        }
+      }
+    }
+  }
+  form {
+    ion-item {
+      --background: #fafafa;
+    }
+  }
+  ion-button {
+    width: 100%;
+    margin: 0;
+    border: none;
+  }
+}
+
+ion-footer {
+  ion-button {
+    margin: 0;
+  }
+}

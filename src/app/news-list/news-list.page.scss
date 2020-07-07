@@ -1,0 +1,41 @@
+.news-list-page {
+  ion-list {
+    ion-item {
+      ion-thumbnail {
+        margin-bottom: auto;
+      }
+      ion-label {
+        margin-top: 4px;
+        h2 {
+          font-size: 16px;
+          font-weight: bold;
+          white-space: normal;
+          small {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: #747474;
+            font-weight: normal;
+            margin-top: 5px;
+            ion-label {
+              padding-left: 4px;
+            }
+          }
+        }
+        p {
+          p:not(:first-child) {
+            display: none;
+          }
+          p:first-child {
+            white-space: normal;
+            line-height: 1.4;
+            -webkit-line-clamp: 4;
+            display: -webkit-box;
+            box-sizing: border-box;
+            -webkit-box-orient: vertical;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,33 @@
+ion-content {
+  p {
+    font-size: var(--sub-heading-font-size);
+  }
+  ion-item-divider {
+    --background: var(--ion-color-light-shade);
+    ion-avatar {
+      margin-right: 16px;
+    }
+    ion-label {
+      padding-bottom: 0;
+      padding-top: 0;
+      h2 {
+        font-weight: bold;
+        font-size: var(--heading-font-size);
+        color: var(--ion-color-light-contrast);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+  ion-item {
+    ion-label {
+      padding-bottom: 0;
+      padding-top: 0;
+      h2 {
+        font-size: 14px;
+        font-weight: 400;
+      }
+    }
+  }
+}

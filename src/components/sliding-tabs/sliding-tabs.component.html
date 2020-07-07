@@ -1,0 +1,37 @@
+<div class="sliding-tabs">
+  <ion-slides *ngIf="type!='image'" [options]="sliderConfig">
+    <ion-slide class="first-slide" [class.selected]="selected==0" *ngIf="shared.allCategories!=null"
+      (click)="changeTab('0')">
+      {{'All'|translate}}</ion-slide>
+    <ion-slide [class.selected]="selected==c.id" *ngFor="let c of shared.allCategories" (click)="changeTab(c)">
+      {{c.name}}
+    </ion-slide>
+  </ion-slides>
+
+
+  <!-- Home-2 For Segments With Image -->
+  <ion-slides *ngIf="type=='image'" [options]="sliderConfig">
+    <ion-slide class="first-slide" [class.selected]="selected==0" *ngIf="shared.allCategories!=null"
+      (click)="changeTab('0')">
+      <img src="assets/home-page/category.png">
+      {{'All'|translate}}</ion-slide>
+    <ion-slide [class.selected]="selected==c.id" *ngFor="let c of shared.allCategories" (click)="changeTab(c)">
+      <img *ngIf="c.image" src="{{c.image.src}}">
+      {{c.name}}
+    </ion-slide>
+  </ion-slides>
+  <!-- scrollable segment divisions -->
+  <div [ngSwitch]="selected">
+  </div>
+  <ion-grid class="ion-no-padding">
+    <ion-row class="ion-no-padding">
+      <ion-col *ngFor="let p of products" size="6" class="ion-no-padding">
+        <app-product [data]="p" [type]="'normal'"></app-product>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <!-- infinite scroll -->
+  <ion-infinite-scroll threshold="10px" #infinite (ionInfinite)="getProducts($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</div>

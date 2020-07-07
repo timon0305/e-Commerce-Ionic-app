@@ -1,0 +1,108 @@
+ion-content {
+  .nameTextAvatar {
+    width: auto;
+    height: auto;
+  }
+  ion-list {
+    ion-item {
+      --inner-padding-end: 0;
+      ion-menu-toggle {
+        width: 100%;
+      }
+      &:first-child {
+        --inner-padding-end: 0;
+        --padding-start: 0;
+        height: 100px;
+        #backimage {
+          position: fixed;
+          opacity: 0.3;
+        }
+        div {
+          background: var(--ion-color-primary-shade);
+          width: 100%;
+          height: 100px;
+        }
+        ion-item {
+          position: absolute;
+          --background: transparent;
+          --color: var(--ion-color-primary-contrast);
+          ion-label {
+            h2 {
+              font-weight: bold;
+            }
+            p {
+              color: var(--ion-color-primary-contrast);
+              white-space: normal;
+            }
+          }
+        }
+      }
+      ion-grid {
+        ion-row {
+          border-bottom: solid var(--ion-color-light-shade);
+          border-width: 0.4px;
+          height: 47px;
+          ion-icon {
+            zoom: 1.2;
+          }
+          img {
+            max-width: 60%;
+          }
+          ion-col {
+            p {
+              margin-top: 6px !important;
+              margin-bottom: 8px !important;
+            }
+            &:first-child {
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.item-inner-list {
+  height: 52px !important;
+  margin-left: -3px !important;
+  --inner-padding-end: 0 !important;
+  --padding-start: 0 !important;
+  ion-row {
+    padding-left: 0 !important;
+  }
+  &:last-child {
+    border-bottom: none;
+  }
+}
+.col-text {
+  padding-left: 16px !important;
+}
+
+.primary-Color {
+  color: var(--ion-color-primary);
+  display: none;
+}
+#nametext {
+  font-size: 25px;
+  text-transform: capitalize;
+}
+
+.rotation-animation {
+  animation-name: rotate;
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.margin50bottom {
+  margin-bottom: 50px;
+}

@@ -1,0 +1,29 @@
+ion-list {
+    padding-top: 0;
+    ion-card {
+        height: 235px;
+        img {
+            filter: brightness(0.6);
+            width: 100%;
+        }
+        div {
+            position: absolute;
+            top: 32%;
+            text-align: center;
+            width: 100%;
+            color: white;
+            font-weight: bold;
+            height: 250px;
+            h2 {
+                margin-top: 25px;
+                margin-bottom: 5px;
+                font-size: var(--heading-font-size);
+                font-weight: bold;
+            }
+            p {
+                font-size: var(--sub-heading-font-size);
+                margin-top: 0;
+            }
+        }
+    }
+}

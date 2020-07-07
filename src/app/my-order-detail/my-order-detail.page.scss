@@ -1,0 +1,30 @@
+
+ion-content{
+    ion-card{
+        ion-card-header{
+            font-size: 20px;
+            margin-bottom: 0;
+            margin-top: 0;
+            color: black;
+            background-color: lightgray;
+            h4{
+                margin-top: 0;
+                margin-bottom: 0;
+                font-size: 18px;
+            }
+        }
+        ion-card-content{
+            background-color: white;
+            padding-top: 10px !important;
+            padding-left: 10px !important;
+            padding-right: 10px !important;
+            padding-bottom: 10px !important;
+            color: black;
+
+            .item{
+                background-color: transparent;
+            }
+        }
+    }
+    
+}

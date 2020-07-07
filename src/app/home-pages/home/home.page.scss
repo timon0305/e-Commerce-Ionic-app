@@ -1,0 +1,40 @@
+.home-page-1 {
+  .swiper-slide {
+    width: 40%;
+  }
+  // if data load
+  ion-segment {
+    ion-segment-button {
+      font-size: 0.75rem;
+    }
+  }
+  ion-slides {
+    ion-slide {
+      &:last-child {
+        height: auto;
+      }
+    }
+  }
+  app-product {
+    width: 100%;
+  }
+
+  // ion-fab {
+  //   position: fixed;
+  //   ion-fab-button {
+  //     --background: var(--ion-color-primary);
+  //   }
+  // }
+}
+.home-toolbar  {
+  --background: var(--ion-color-primary-contrast)!important;
+  --color: var(--ion-color-primary-contrast);
+}
+.ion-color-secondary {
+  --ion-color-base: #6ab78a !important;
+  --ion-color-base-rgb: var(--ion-color-secondary-rgb, 61, 194, 255) !important;
+  --ion-color-contrast: var(--ion-color-secondary-contrast, #fff) !important;
+  --ion-color-contrast-rgb: var(--ion-color-secondary-contrast-rgb, 255, 255, 255) !important;
+  --ion-color-shade: var(--ion-color-secondary-shade, #36abe0) !important;
+  --ion-color-tint: var(--ion-color-secondary-tint, #50c8ff) !important;
+}

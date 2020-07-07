@@ -1,0 +1,25 @@
+ion-content {
+  p {
+    font-size: 20px;
+    text-align: center;
+  }
+  form {
+    ion-item {
+      --background: var(--ion-background-color);
+      ion-label {
+        color: rgba(var(--ion-text-color-rgb), 0.5);
+      }
+    }
+  }
+}
+
+ion-footer {
+  .toolbar {
+    padding-left: 10px;
+  }
+  ion-button {
+    height: 45px;
+    margin: 0;
+    margin-bottom: 0;
+  }
+}

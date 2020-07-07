@@ -1,0 +1,127 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-menu-button slot="start" *ngIf="!config.appNavigationTabs">
+      <ion-icon name="menu"></ion-icon>
+    </ion-menu-button>
+    <ion-title> {{'Address'| translate }} </ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" routerLink="/cart" routerDirection="forward">
+        <ion-icon name="basket"></ion-icon>
+        <ion-badge>{{shared.cartTotalItems()}}</ion-badge>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <!-- For Shipping Address -->
+  <p>
+    {{'Shipping Address'| translate }}
+  </p>
+
+  <form #shippingForm="ngForm">
+    <ion-item>
+      <ion-label position="floating">{{'First Name'|translate}}</ion-label>
+      <ion-input type="text" name="shipping_firstname" [(ngModel)]="shipping.first_name" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">{{'Last Name'|translate}}</ion-label>
+      <ion-input type="text" name="shipping_lastname" [(ngModel)]="shipping.last_name" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">{{'Compnay'|translate}}</ion-label>
+      <ion-input type="text" name="company" [(ngModel)]="shipping.company"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">{{'Address'|translate}} 1</ion-label>
+      <ion-input type="text" name="address" [(ngModel)]="shipping.address_1" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">{{'Address'|translate}} 2</ion-label>
+      <ion-input type="text" name="address2" [(ngModel)]="shipping.address_2"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">{{'Country'|translate}}</ion-label>
+      <ion-input type="text" name="shipping_country" tappable (click)="selectCountryPage('shippingUpdate')" readonly
+        [(ngModel)]="shippingCountryName" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">{{'State'|translate}}</ion-label>
+      <ion-input type="text" required name="shipping_zone" tappable (click)="selectZonePage('shippingUpdate')" readonly
+        [(ngModel)]="shippingStateName"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">{{'City'|translate}}</ion-label>
+      <ion-input type="text" name="shipping_city" [(ngModel)]="shipping.city" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">{{'Post code'|translate}}</ion-label>
+      <ion-input type="text" name="shipping_postcode" [(ngModel)]="shipping.postcode" required></ion-input>
+    </ion-item>
+  </form>
+  <ion-button expand="full" color="secondary" (click)="updateShippingAddress()" [disabled]="!shippingForm.form.valid">
+    {{'Update Shipping'|translate}}
+  </ion-button>
+
+  <!-- For Billing Address -->
+  <p>
+    {{'Billing Address'| translate }}
+  </p>
+
+  <form #billingForm="ngForm">
+    <ion-item>
+      <ion-label position="floating">{{'First Name'|translate}}</ion-label>
+      <ion-input type="text" name="billing_firstname" [(ngModel)]="billing.first_name" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">{{'Last Name'|translate}}</ion-label>
+      <ion-input type="text" name="billing_lastname" [(ngModel)]="billing.last_name" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">{{'Compnay'|translate}}</ion-label>
+      <ion-input type="text" name="billingcompany" [(ngModel)]="billing.company"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">{{'Address'|translate}} 1</ion-label>
+      <ion-input type="text" name="billingaddress" [(ngModel)]="billing.address_1" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">{{'Address'|translate}} 2</ion-label>
+      <ion-input type="text" name="billingaddress2" [(ngModel)]="billing.address_2"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">{{'Country'|translate}}</ion-label>
+      <ion-input type="text" name="billing_country" tappable (click)="selectCountryPage('billingUpdate')" readonly
+        [(ngModel)]="billingCountryName" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">{{'State'|translate}}</ion-label>
+      <ion-input type="text" required name="billing_zone" tappable (click)="selectZonePage('billingUpdate')" readonly
+        [(ngModel)]="billingStateName"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">{{'City'|translate}}</ion-label>
+      <ion-input type="text" name="billing_city" [(ngModel)]="billing.city" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">{{'Post code'|translate}}</ion-label>
+      <ion-input type="text" name="billing_postcode" [(ngModel)]="billing.postcode" required></ion-input>
+    </ion-item>
+  </form>
+  <ion-button expand="full" color="secondary" (click)="updateBillingAddress()" [disabled]="!billingForm.form.valid">
+    {{'Update Billing'|translate}}
+  </ion-button>
+</ion-content>

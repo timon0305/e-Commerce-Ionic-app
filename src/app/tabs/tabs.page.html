@@ -1,0 +1,41 @@
+<ion-tabs #appTabs >
+  <ion-tab-bar slot="bottom" (click)="ionChange(appTabs)">
+    <ion-tab-button tab="{{config.getCurrentHomePage()}}">
+      <img *ngIf="showImg()" src="assets/left-menu-icon/home.png">
+      <ion-icon *ngIf="!showImg()" name="home"></ion-icon>
+      <ion-label>
+        <b>{{'Home'|translate}}</b>
+      </ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="search">
+      <img *ngIf="showImg()" src="assets/left-menu-icon/search.png">
+      <ion-icon *ngIf="!showImg()" name="search"></ion-icon>
+      <ion-label>
+        <b>{{'Search'|translate}}</b>
+      </ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="{{config.getCurrentCategoriesPage()}}">
+      <img *ngIf="showImg()" style="width: 40%;" src="assets/left-menu-icon/category.png">
+      <ion-icon *ngIf="!showImg()" name="apps"></ion-icon>
+      <ion-label>
+        <b>{{'Categories'|translate}}</b>
+      </ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="cart">
+      <img *ngIf="showImg()" src="assets/left-menu-icon/bag.png">
+      <ion-icon *ngIf="!showImg()" name="basket"></ion-icon>
+      <ion-badge class="cart-badge" mode="ios" color="secondary" [class.bag-fix]="showImg()">{{shared.cartTotalItems()}}</ion-badge>
+      <ion-label>
+        <b>{{'My Cart'|translate}}</b>
+      </ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="settings">
+      <img *ngIf="showImg()" src="assets/left-menu-icon/user.png">
+      <ion-icon *ngIf="!showImg()" name="person"></ion-icon>
+      <ion-label>
+        <b>{{'Account'|translate}}</b>
+      </ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+
+</ion-tabs>

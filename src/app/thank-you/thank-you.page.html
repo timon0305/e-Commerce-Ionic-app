@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-menu-button slot="start" *ngIf="!config.appNavigationTabs">
+      <ion-icon name="menu"></ion-icon>
+    </ion-menu-button>
+    <ion-title> {{'Thank You'| translate }} </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <ion-icon name="checkmark-circle"></ion-icon>
+      <h3>{{'Thank You'| translate }}</h3>
+      <h4>{{'Thank you for shopping with us.'| translate }}</h4>
+      <ion-button expand="block" color="secondary" *ngIf="shared.customerData.id!=null" (click)="openOrders()">
+        {{'My Orders'| translate }}</ion-button>
+      <ion-button (click)="openHome()" expand="block" fill="clear" color="secondary">
+        {{'Continue Shopping'| translate }}</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

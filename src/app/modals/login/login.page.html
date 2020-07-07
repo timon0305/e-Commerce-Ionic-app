@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button fill="clear" (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="ion-no-padding">{{'Login'|translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-img src="assets/icons_stripe.svg"></ion-img>
+
+  <form #loginForm="ngForm" class="form" (ngSubmit)="login()">
+    <ion-item>
+      <ion-label position="floating">{{'Email or Username'|translate}}</ion-label>
+      <ion-input type="text" name="email" [(ngModel)]="formData.username" required>
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">{{'Password'|translate}}</ion-label>
+      <ion-input type="password" name="password" [(ngModel)]="formData.password" required>
+      </ion-input>
+    </ion-item>
+
+    <ion-item lines="none" *ngIf="errorMessage!=''">
+      <ion-label>
+        {{errorMessage| translate}}
+      </ion-label>
+    </ion-item>
+
+
+    <ion-button [disabled]="!loginForm.form.valid" color="secondary" expand="full" type="submit">
+      {{ 'Login' | translate }}
+    </ion-button>
+
+  </form>
+
+  <ion-button expand="full" fill="clear" color="dark" (click)="openForgetPasswordPage()">{{ "I've forgotten my
+      password?" | translate }}</ion-button>
+
+  <ion-button *ngIf="config.fbButton==1" expand="full" (click)="facebookLogin()">{{ 'Login with' | translate }}
+    <ion-icon name="logo-facebook"></ion-icon>
+  </ion-button>
+
+  <ion-button expand="block" fill="outline" (click)="openSignUpPage()">{{ 'Register' | translate }}</ion-button>
+
+  <ion-button expand="block" *ngIf="config.guestCheckOut && hideGuestLogin" [disabled]="shared.cartProducts.length==0"
+    (click)="guestLogin()">
+    {{'Continue as a Guest'|translate}}</ion-button>
+
+</ion-content>

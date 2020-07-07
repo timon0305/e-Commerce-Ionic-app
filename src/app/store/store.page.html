@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list class="list-avatar">
+    <img class="bing-img" src="{{banner}}" *ngIf="banner!=false">
+    <ion-item class="ion-no-padding ion-text-center">
+      <ion-label>
+        <ion-avatar *ngIf="gravatar!=null">
+          <img src="{{gravatar}}">
+        </ion-avatar>
+        <h2>{{name}}</h2>
+        <p class="icon" *ngIf="rating!=null">
+          <ion-icon name="star-outline"></ion-icon>&nbsp;&nbsp;{{rating.rating}}
+        </p>
+        <p>{{email}}</p>
+        <ion-button color="light" (click)="contactUs()">
+          {{'Contact Us' | translate }}
+        </ion-button>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-grid class="ion-no-padding">
+    <ion-row class="ion-no-padding">
+      <ion-col *ngFor="let p of products" size="6" class="ion-no-padding">
+        <app-product [data]="p" [type]="'normal'"></app-product>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-infinite-scroll #infinite (ionInfinite)="getProducts()">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

@@ -1,0 +1,32 @@
+
+ion-content {
+  .top-margin {
+    margin-top: 50%;
+  }
+  ion-grid {
+    ion-row {
+        margin-right: 10px;
+      ion-col {
+        text-align: center;
+        ion-icon {
+          zoom: 3.9;
+          color: lightgrey;
+        }
+        ion-button {
+          --border-radius: 0px;
+          height: 30px;
+        }
+        h4 {
+          font-size: 16px;
+          font-weight: bold;
+          margin-top: 2px;
+        }
+        h5 {
+          font-size: 14px;
+          color: gray;
+          margin-top: 0;
+        }
+      }
+    }
+  }
+}

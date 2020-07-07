@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button fill="clear" (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{'Select Country'|translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-searchbar (ionInput)="getItems($event)" placeholder="{{'Search'|translate}}" #Searchbar></ion-searchbar>
+  <ion-list>
+    <ion-item *ngFor="let item of items" (click)="selectCountry(item)">
+      {{ item.name }}
+    </ion-item>
+  </ion-list>
+</ion-content>

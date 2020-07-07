@@ -1,0 +1,145 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button fill="clear" (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="demo-settings">
+
+  <ion-list-header color="medium" class="ion-margin-vertical">
+    <ion-label>Change App Theme</ion-label>
+  </ion-list-header>
+  <ion-card class="ion-no-margin ion-margin-horizontal">
+    <ion-grid>
+      <ion-row>
+        <ion-col size=auto *ngFor="let c of colors;" (click)="changeAppTheme(c.name)">
+          <ion-icon name="square" style.color="{{c.value}}" class="color-box">
+          </ion-icon>
+          <ion-icon class="icon-checked" *ngIf="c.name==config.appTheme" name="checkmark-outline"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+
+
+  <ion-list-header color="medium" class="ion-margin-vertical">
+    <ion-label>Choose Color Mode</ion-label>
+  </ion-list-header>
+
+  <ion-item lines=none>
+
+    <ion-segment (ionChange)="modeChange()" mode="ios" [value]="themeMode" [(ngModel)]="themeMode">
+      <ion-segment-button value="dark" class="ion-padding">
+        <ion-icon name="color-palette-outline"></ion-icon>
+        <ion-label>Dark Mode</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="light" class="ion-padding">
+        <ion-icon name="color-palette-outline"></ion-icon>
+        <ion-label>Light Mode</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-item>
+
+
+  <ion-list-header color="medium" class="ion-margin-vertical">
+    <ion-label>Navigation</ion-label>
+  </ion-list-header>
+
+  <ion-item lines=none>
+
+    <ion-segment (ionChange)="navigationChange()" mode="ios" [value]="navigation" [(ngModel)]="navigation">
+      <ion-segment-button value="bottom" class="ion-padding">
+        <ion-icon name="navigate"></ion-icon>
+        <ion-label>Bottom Navigation</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="left" class="ion-padding">
+        <ion-icon name="navigate"></ion-icon>
+        <ion-label>Left Navigation</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-item>
+
+
+  <ion-item color="medium" class="ion-margin-top">
+    <ion-label>
+      Multi Language
+    </ion-label>
+  </ion-item>
+
+  <ion-list>
+    <ion-radio-group [(ngModel)]="language" (ionChange)="updateLanguage()" mode=ios>
+      <ion-card *ngFor="let v of languageList" class="ion-no-margin ion-margin-top ion-margin-horizontal">
+        <ion-item lines=none>
+          <ion-avatar slot="start">
+            <img src="{{v.image}}">
+          </ion-avatar>
+          <ion-label>{{v.name}}</ion-label>
+          <ion-radio [value]="v"></ion-radio>
+        </ion-item>
+      </ion-card>
+    </ion-radio-group>
+  </ion-list>
+
+  <ion-item color="medium" class="ion-margin-top">
+    <ion-label>
+      Multi Currency
+    </ion-label>
+    <ion-spinner *ngIf="loaderCurrecny"></ion-spinner>
+  </ion-item>
+
+  <ion-list>
+    <ion-radio-group [(ngModel)]="currency" mode=ios>
+      <ion-card *ngFor="let v of currencyList" class="ion-no-margin ion-margin-top ion-margin-horizontal">
+        <ion-item lines=none (click)="updateCurrency()">
+          <ion-label>{{v.name}}</ion-label>
+          <ion-radio [value]="v"></ion-radio>
+        </ion-item>
+      </ion-card>
+    </ion-radio-group>
+  </ion-list>
+
+  <ion-item color="medium" class="ion-margin-top">
+    <ion-label>
+      Banner Style
+    </ion-label>
+  </ion-item>
+  <ion-list>
+    <ion-row class="ion-no-padding product-cards ion-text-center">
+      <ion-col (click)="setBannerStyle(p)" *ngFor="let p of [1,2,3,4,5,6]" class="ion-no-padding"
+        (click)="setCardStyle(p)" size="12">
+        <img src="assets/banners/{{p}}.png">
+
+        <ion-row class="selected-card" *ngIf="p==config.appSettings.banner_style">
+          <ion-icon name="checkmark-circle"></ion-icon>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-list>
+
+
+  <ion-item color="medium" class="ion-margin-top">
+    <ion-label>
+      Product Card Styles
+    </ion-label>
+  </ion-item>
+  <ion-list>
+    <ion-row class="ion-no-padding product-cards ion-text-center">
+      <ion-col *ngFor="let p of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22]" size="6"
+        class="ion-no-padding" (click)="setCardStyle(p)">
+        <img src="assets/card-style/rcard{{p}}.png">
+
+        <ion-row class="selected-card" *ngIf="p==config.productCardStyle">
+          <ion-icon name="checkmark-circle"></ion-icon>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-list>
+
+
+</ion-content>

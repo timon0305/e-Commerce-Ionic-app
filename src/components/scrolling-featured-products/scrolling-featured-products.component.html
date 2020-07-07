@@ -1,0 +1,10 @@
+<ion-grid class="ion-no-padding">
+  <ion-row class="ion-no-padding">
+    <ion-col *ngFor="let p of products" size="6" class="ion-no-padding">
+      <app-product [data]="p" [type]="'normal'"></app-product>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+<ion-infinite-scroll #infinite (ionInfinite)="getProducts()">
+  <ion-infinite-scroll-content></ion-infinite-scroll-content>
+</ion-infinite-scroll>

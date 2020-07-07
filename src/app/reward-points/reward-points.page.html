@@ -1,0 +1,85 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+    <ion-menu-button slot="start" *ngIf="!config.appNavigationTabs">
+      <ion-icon name="menu"></ion-icon>
+    </ion-menu-button>
+    <ion-title> {{'Reward Point'| translate }} </ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" (click)="refreshPage()">
+        <ion-icon name="refresh"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="grid" class="ion-no-padding" *ngIf="rewards.length==0 && !httpLoading">
+    <ion-row class="ion-no-padding">
+      <ion-col size="12" class="ion-no-padding">
+        <ion-icon name="happy"></ion-icon>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-no-padding">
+      <ion-col size="12" class="ion-no-padding">
+        <h4>{{'Your Rewards List is Empty'|translate}}</h4>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-no-padding">
+      <ion-col size="12" class="ion-no-padding">
+        <h5>{{'continue shopping'|translate}}</h5>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-no-padding">
+      <ion-col size="12" class="ion-no-padding">
+        <ion-button color="secondary" (click)="openShop()">{{'Explore'|translate}}
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid>
+    <ion-card *ngFor="let r of rewards">
+      <ion-card-content>
+        <ion-row>
+          <ion-col size="6">
+            {{'Action'|translate}}
+          </ion-col>
+          <ion-col class="ion-text-right" col-6>
+            {{r.type}}
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="6">
+            {{'Points'|translate}}
+          </ion-col>
+          <ion-col class="ion-text-right" size="6">
+            {{r.points}}
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="6">
+            {{'Date'|translate}}
+          </ion-col>
+          <ion-col class="ion-text-right" size="6">
+            {{r.date}}
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+  </ion-grid>
+</ion-content>
+<ion-footer>
+  <ion-row>
+    <ion-col>
+      <h5> {{'Total Points Earned'|translate}} &nbsp;&nbsp;:</h5>
+    </ion-col>
+    <ion-col class="ion-text-right">
+      <h5>{{totalPoints()}}</h5>
+    </ion-col>
+  </ion-row>
+</ion-footer>

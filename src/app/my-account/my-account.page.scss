@@ -1,0 +1,15 @@
+form {
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 12px;
+    ion-item {
+        --padding-start: 0;
+        --background: var(--ion-background-color);
+        ion-label {
+            color: rgba(var(--ion-text-color-rgb), 0.5);
+        }
+    }
+    ion-button {
+        text-transform: uppercase;
+    }
+}

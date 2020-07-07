@@ -1,0 +1,146 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-menu-button slot="start" *ngIf="!config.appNavigationTabs">
+      <ion-icon name="menu"></ion-icon>
+    </ion-menu-button>
+    <ion-title>
+      {{'Settings'| translate }}
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" ((click)="share()" *ngIf="showOption('sharePage')">
+        <ion-icon name="share"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" (click)="rateUs()" *ngIf="showOption('ratePage')">
+        <ion-icon slot="icon-only" name="star-half"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" routerLink="/cart" routerDirection="forward" *ngIf="!config.appNavigationTabs">
+        <ion-icon name="basket"></ion-icon>
+        <ion-badge color="secondary">{{shared.cartTotalItems()}}</ion-badge>
+      </ion-button>
+    </ion-buttons>
+
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="setting-page">
+  <ion-grid class="ion-padding">
+
+    <ion-row *ngIf="shared.customerData.id==null" (click)="openLoginPage()">
+      <ion-avatar>
+        <img src="assets/avatar.png">
+      </ion-avatar>
+      <ion-col size="12" class="ion-no-padding">
+        <h2>{{ 'Login & Register' | translate }}</h2>
+        <p>{{ 'Please login or create an account for free' | translate }}</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="shared.customerData.id!=null">
+      <ion-avatar>
+        <ion-fab-button id="nametxt">{{getNameFirstLetter()}}</ion-fab-button>
+      </ion-avatar>
+      <ion-col size="12" class="ion-no-padding">
+        <h2>{{shared.customerData.first_name +"&nbsp;"+shared.customerData.last_name}}</h2>
+        <p>{{shared.customerData.email}}</p>
+        <ion-button (click)="openAccountPage()">{{'Edit Profile' | translate }}</ion-button>
+      </ion-col>
+    </ion-row>
+    <span class="opacity-background"></span>
+  </ion-grid>
+  <ion-list class="ion-padding">
+    <ion-item lines="none">
+      <ion-label>
+        <p>{{"Turn on/off Notifications"|translate}}</p>
+      </ion-label>
+      <ion-toggle [(ngModel)]="setting.notification" (ionChange)="onOffPushNotification(setting.notification)">
+      </ion-toggle>
+    </ion-item>
+  </ion-list>
+  <ion-list class="ion-padding">
+    <ion-item lines="full" (click)="openLanguagePage()" *ngIf="config.multiLanguage">
+      <ion-label>
+        <p>{{"Select Language"|translate}}</p>
+      </ion-label>
+      <ion-icon slot="end" name="globe"></ion-icon>
+    </ion-item>
+    <ion-item lines="full" (click)="openCurrencyPage()" *ngIf="config.multiCurrency">
+      <ion-label>
+        <p>{{"Select Currency"|translate}}</p>
+      </ion-label>
+      <ion-icon slot="end" name="logo-usd"></ion-icon>
+    </ion-item>
+    <ion-item lines="full" (click)="openPage('wish-list')" *ngIf="showOption('wishListPage')">
+      <ion-label>
+        <p>{{"My Wish List"|translate}}</p>
+      </ion-label>
+      <ion-icon slot="end" name="heart"></ion-icon>
+    </ion-item>
+    <ion-item lines="full" (click)="openPage('my-account')" *ngIf="showOption('editPage')">
+      <ion-label>
+        <p>{{"Edit Profile"|translate}}</p>
+      </ion-label>
+      <ion-icon slot="end" name="lock-closed"></ion-icon>
+    </ion-item>
+    <ion-item lines="full" (click)="openPage('addresses')" *ngIf="showOption('address')">
+      <ion-label>
+        <p>{{"Address"|translate}}</p>
+      </ion-label>
+      <ion-icon slot="end" name="locate"></ion-icon>
+    </ion-item>
+    <ion-item lines="full" (click)="openPage('my-orders')" *ngIf="showOption('myOrdersPage')">
+      <ion-label>
+        <p>{{"My Orders"|translate}}</p>
+      </ion-label>
+      <ion-icon slot="end" name="cart"></ion-icon>
+    </ion-item>
+    <ion-item lines="full" (click)="openPage('downloads')" *ngIf="showOption('downloadPage')">
+      <ion-label>
+        <p>{{"Downloads"|translate}}</p>
+      </ion-label>
+      <ion-icon slot="end" name="download"></ion-icon>
+    </ion-item>
+
+    <ion-item lines="full" (click)="openPage('reward-points')" *ngIf="showOption('rewardPointsPage')">
+      <ion-label>
+        <p>{{"Reward Points"|translate}}</p>
+      </ion-label>
+      <ion-icon slot="end" name="happy"></ion-icon>
+    </ion-item>
+
+    <ion-item lines="full" (click)="openPage('notifications')" *ngIf="showOption('scratchCardPage')">
+      <ion-label>
+        <p>{{"Scratch Cards"|translate}}</p>
+      </ion-label>
+      <ion-icon slot="end" name="notifications"></ion-icon>
+    </ion-item>
+
+    <ion-item lines="full" (click)="openPage('contact-us')" *ngIf="showOption('contactPage')">
+      <ion-label>
+        <p>{{"Contact Us"|translate}}</p>
+      </ion-label>
+      <ion-icon slot="end" name="call"></ion-icon>
+    </ion-item>
+    <ion-item lines="full" (click)="openPage('about-us')" *ngIf="showOption('aboutUsPage')">
+      <ion-label>
+        <p>{{"About Us"|translate}}</p>
+      </ion-label>
+      <ion-icon slot="end" name="information-circle"></ion-icon>
+    </ion-item>
+    <ion-item lines="full" (click)="openPage('news')" *ngIf="showOption('newsPage')">
+      <ion-label>
+        <p>{{"News"|translate}}</p>
+      </ion-label>
+      <ion-icon slot="end" name="newspaper"></ion-icon>
+    </ion-item>
+    <ion-item lines="full" (click)="openPage('intro')" *ngIf="showOption('introPage')">
+      <ion-label>
+        <p>{{"Intro"|translate}}</p>
+      </ion-label>
+      <ion-icon slot="end" name="caret-forward"></ion-icon>
+    </ion-item>
+  </ion-list>
+  <ion-item lines="none" *ngIf="shared.customerData.id!=null">
+    <ion-button color="secondary" (click)="logOut()">{{'Log Out' | translate }}</ion-button>
+  </ion-item>
+</ion-content>

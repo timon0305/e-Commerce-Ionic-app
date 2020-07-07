@@ -1,0 +1,112 @@
+<!-- For Home-6 -->
+<!-- =========================================================== with name and product -->
+<div class="name" *ngIf="type=='withName'">
+
+  <ion-slides class="animate-item" [options]="sliderConfig">
+    <ion-slide *ngFor="let c of shared.categories" (click)="openSubCategories(c)">
+      <!-- For Real Products -->
+      <ion-card *ngIf="c!=1">
+
+        <img *ngIf="c.image" src="{{c.image.src}}" />
+        <img *ngIf="!c.image" src="assets/placeholder.png" />
+
+        <ion-text>
+          <h6>{{c.name}}</h6>
+          <p>{{c.count}} Products</p>
+        </ion-text>
+      </ion-card>
+      <!-- For Skeleton -->
+      <ion-card *ngIf="c==1" class="skeleton-name">
+        <ion-skeleton-text animated>
+        </ion-skeleton-text>
+        <p>
+          <ion-skeleton-text animated>
+          </ion-skeleton-text>
+        </p>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+
+</div>
+
+<!-- For Home-7 -->
+<!-- =========================================================== with name and product count -->
+<div class="name-count" *ngIf="type=='name&count'">
+  <ion-slides class="animate-item" [options]="sliderConfig">
+    <ion-slide *ngFor="let c of shared.categories" (click)="openSubCategories(c)">
+      <!-- For Real Products -->
+      <ion-card *ngIf="c!=1" class="card-h7">
+        <ion-avatar>
+          <img *ngIf="c.image" src="{{c.image.src}}" />
+          <img *ngIf="!c.image" src="assets/placeholder.png" />
+        </ion-avatar>
+        <ion-text>
+          <h6>{{c.name}}</h6>
+          <p>{{c.count}} Products</p>
+        </ion-text>
+      </ion-card>
+      <!-- For Skeleton -->
+      <ion-card *ngIf="c==1">
+        <ion-skeleton-text animated>
+        </ion-skeleton-text>
+        <p>
+          <ion-skeleton-text animated>
+          </ion-skeleton-text>
+        </p>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+</div>
+
+<!-- For Home-8 -->
+<!-- =========================================================== with name and round image -->
+<div class="round" *ngIf="type=='roundImage'">
+  <ion-slides class="animate-item" [options]="sliderConfig2">
+    <ion-slide *ngFor="let c of shared.categories" (click)="openSubCategories(c)">
+      <!-- For Real Products -->
+      <ion-card *ngIf="c!=1" class="card-h8">
+        <ion-avatar>
+          <img *ngIf="c.image" src="{{c.image.src}}" />
+          <img *ngIf="!c.image" src="assets/placeholder.png" />
+        </ion-avatar>
+        <ion-text>
+          <h6>{{c.name}}</h6>
+          <p>{{c.count}} Products</p>
+        </ion-text>
+
+      </ion-card>
+      <!-- For Skeleton -->
+      <ion-card *ngIf="c==1" class="card-skeleton-h8">
+        <ion-avatar>
+          <ion-skeleton-text class="skeleton-h8" animated>
+          </ion-skeleton-text>
+        </ion-avatar>
+        <p>
+          <ion-skeleton-text animated>
+          </ion-skeleton-text>
+        </p>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+</div>
+
+<!-- // For Home-9 -->
+<!-- =========================================================== with name and round image -->
+<div class="grid" *ngIf="type=='grid'">
+  <ion-grid class="ion-no-padding categories-grid">
+    <ion-row class="ion-no-padding">
+      <ion-col size="4" *ngFor="let c of shared.categories | slice:0:6;" (click)="openSubCategories(c)">
+        <ion-card class="card-h9">
+          <ion-avatar class="avatar-h9">
+            <img *ngIf="c.image" src="{{c.image.src}}" />
+            <img *ngIf="!c.image" src="assets/placeholder.png" />
+          </ion-avatar>
+          <ion-text>
+            <h6>{{c.name}}</h6>
+            <p>{{c.count}} Products</p>
+          </ion-text>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>

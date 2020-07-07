@@ -1,0 +1,101 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-menu-button slot="start" *ngIf="!config.appNavigationTabs">
+      <ion-icon name="menu"></ion-icon>
+    </ion-menu-button>
+    <ion-title>
+      <ion-img src="assets/logo_header.png" alt="logo"></ion-img>
+    </ion-title>
+    <ion-buttons slot="end" *ngIf="!config.appNavigationTabs">
+      <ion-button fill="clear" routerLink="/search" routerDirection="forward">
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" routerLink="/cart" routerDirection="forward">
+        <ion-icon name="basket"></ion-icon>
+        <ion-badge color="secondary">{{shared.cartTotalItems()}}</ion-badge>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+  <!-- For Categories Sliders -->
+  <app-categories [type]="'roundImage'"></app-categories>
+
+  <!-- Newest Products Heading -->
+
+  <ion-row class="top-icon-header">
+    <ion-button fill="clear">
+      <ion-icon slot="start" name="albums"></ion-icon>
+      {{'Newest Products'|translate}}
+    </ion-button>
+    <ion-button id="second" fill="clear" (click)="openProducts('newest')">
+      <ion-icon slot="end" name="caret-forward"></ion-icon>
+      {{ 'Shop More' | translate }}
+    </ion-button>
+  </ion-row>
+
+  <!-- Newest Products swipe slider -->
+  <ion-slides [options]="sliderConfig">
+    <ion-slide *ngFor="let p of shared.tab1">
+      <app-product [data]="p" [type]="'normal'"></app-product>
+    </ion-slide>
+  </ion-slides>
+  <!-- On Sale Products Heading -->
+  <ion-row class="top-icon-header">
+    <ion-button fill="clear">
+      <ion-icon slot="start" name="bookmark"></ion-icon>
+      {{'On Sale Products'|translate}}
+    </ion-button>
+    <ion-button id="second" fill="clear" (click)="openProducts('sale')">
+      <ion-icon slot="end" name="caret-forward"></ion-icon>
+      {{ 'Shop More' | translate }}
+    </ion-button>
+  </ion-row>
+
+  <!-- On Sale Products swipe slider -->
+  <ion-slides [options]="sliderConfig">
+    <ion-slide *ngFor="let p of shared.tab2">
+      <app-product [data]="p" [type]="'normal'"></app-product>
+    </ion-slide>
+  </ion-slides>
+
+  <!-- For Vendor List -->
+  <app-vendor-list></app-vendor-list>
+
+  <!-- Featured Products Heading -->
+  <ion-row class="top-icon-header">
+    <ion-button fill="clear">
+      <ion-icon slot="start" name="md-star"></ion-icon>
+      {{'Featured Products' | translate }}
+    </ion-button>
+    <ion-button id="second" fill="clear" (click)="openProducts('featured')">
+      <ion-icon slot="end" name="caret-forward"></ion-icon>
+      {{ 'Shop More' | translate }}
+    </ion-button>
+  </ion-row>
+
+  <!-- Featured Products -->
+  <ion-grid class="ion-no-padding">
+    <ion-row class="ion-no-padding">
+      <ion-col *ngFor="let p of shared.tab3" size="6" class="ion-no-padding">
+        <app-product [data]="p" [type]="'normal'"></app-product>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6">
+        <ion-icon name="help-buoy"></ion-icon>
+        <p>{{'Contact Us'|translate}}</p>
+        <p><small>{{config.phoneNo}}</small></p>
+      </ion-col>
+      <ion-col size="6">
+        <ion-icon name="card"></ion-icon>
+        <p>{{'Safe Payment'|translate}}</p>
+        <p><small>{{'Secure Online Payment'|translate}}</small></p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

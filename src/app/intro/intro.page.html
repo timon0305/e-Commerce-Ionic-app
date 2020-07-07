@@ -1,0 +1,30 @@
+<ion-content>
+  <ion-slides pager="true" #IonSlides loop="true" class="ion-no-padding">
+    <ion-slide #IonSlides *ngFor="let slide of slides; let i=index" class="ion-no-padding">
+      <span class="ion-no-padding">
+        <ion-row class="ion-justify-content-center">
+          <img src="{{slide.image}}" alt="Slide Images">
+        </ion-row>
+        <ion-row class="ion-justify-content-center">
+          <ion-icon name="{{slide.icon}}"></ion-icon>
+        </ion-row>
+        <ion-row class="ion-justify-content-center">
+          <h2>{{slide.title|translate}}</h2>
+        </ion-row>
+        <ion-row class="ion-justify-content-center">
+          <ion-col>
+            <p>{{slide.text}}</p>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-button *ngIf="slides.length!=i+1" fill="outline" (click)="openHomePage()">
+            {{ 'Skip' | translate }}
+          </ion-button>
+          <ion-button *ngIf="slides.length==i+1" fill="outline" (click)="openHomePage()">
+            {{ 'Done' | translate }}
+          </ion-button>
+        </ion-row>
+      </span>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'Reviews'|translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="review-page">
+  <ion-grid class="rating-gird" *ngIf="r5!=null">
+    <ion-row>
+      <ion-col>
+        <h4>{{'Ratings & Reviews'|translate}}</h4>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-align-items-center">
+      <ion-col size="5">
+        <h1>{{average| number:'1.2-2'}}
+          <ion-icon name="star"></ion-icon>
+        </h1>
+        <h3>{{reviews.length}} {{'rating'|translate}}</h3>
+      </ion-col>
+      <ion-col size="7">
+        <ul>
+          <li>5
+            <ion-icon name="star"></ion-icon>
+            <span class="block animate" [style.width]="r5+'%'" style="background-color:green;"></span>
+          </li>
+          <li>4
+            <ion-icon name="star"></ion-icon>
+            <span class="block animate" [style.width]="r4+'%'" style="background-color:lightgreen;"></span>
+          </li>
+          <li>3
+            <ion-icon name="star"></ion-icon>
+            <span class="block animate" [style.width]="r3+'%'" style="background-color:yellow;"></span>
+          </li>
+          <li>2
+            <ion-icon name="star"></ion-icon>
+            <span class="block animate" [style.width]="r2+'%'" style="background-color:orange;"></span>
+          </li>
+          <li>1
+            <ion-icon name="star"></ion-icon>
+            <span class="block animate" [style.width]="r1+'%'" style="background-color:dar=darkorange;"></span>
+          </li>
+        </ul>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button expand="full" color="danger" (click)="openReviewsPage()">{{'Rate and write a review'|translate}}
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-list class="rating-users">
+    <ion-item *ngFor="let r of reviews">
+      <ion-avatar item-start>
+        <img src="assets/avatar.png">
+      </ion-avatar>
+      <h2>{{r.name}}</h2>
+      <ul class="product-rating">
+        <li>
+          <div class="stars-outer">
+            <div class="stars-inner" [style.width]="(r.rating*20)+'%'"></div>
+          </div>
+          <h6>{{r.date_created|date:'dd-MM-yyyy'}}</h6>
+        </li>
+      </ul>
+      <p [innerHTML]="r.review"></p>
+    </ion-item>
+  </ion-list>
+</ion-content>

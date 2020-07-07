@@ -1,0 +1,23 @@
+ion-content {
+  ion-card {
+    background-color: white;
+    text-align: center;
+    ion-card-content {
+      ion-icon {
+        margin-top: 15px;
+        color: var(--ion-color-primary);
+        font-size: 80px;
+      }
+      h3 {
+        font-size: 20px;
+        margin-top: 15px;
+      }
+      h4 {
+        font-size: 12px;
+      }
+      ion-button {
+        margin-top: 15px;
+      }
+    }
+  }
+}

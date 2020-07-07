@@ -1,0 +1,104 @@
+ion-content {
+  .grid-empty {
+    margin-top: 50%;
+    ion-row {
+      ion-col {
+        text-align: center;
+        ion-icon {
+          zoom: 3.9;
+          color: rgba(var(--ion-text-color-rgb), 0.5);
+        }
+        ion-button {
+          --border-radius: 0px;
+        }
+        h4 {
+          font-size: 16px;
+          font-weight: bold;
+          margin-top: 2px;
+          margin-bottom: 6px;
+        }
+        h5 {
+          font-size: 14px;
+          color: rgba(var(--ion-text-color-rgb), 0.5);
+          margin-top: 0;
+        }
+      }
+    }
+  }
+  ion-card {
+    ion-card-header {
+      border-bottom: solid var(--ion-color-light-shade);
+      border-width: 0.2px;
+      ion-card-subtitle {
+        h3 {
+          font-size: 15px;
+          font-weight: bold;
+          margin-top: 0;
+        }
+      }
+    }
+    ion-card-content {
+      //font-size: 4vw;
+      padding: 0;
+      ion-row {
+        // margin-top: 10px;
+        // margin-bottom: 10px;
+      }
+      ion-col {
+      }
+      .product-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin-right: 10px;
+      }
+      ion-icon {
+        font-size: 7vw;
+        vertical-align: -webkit-baseline-middle;
+        color: var(--ion-color-green-light) !important;
+      }
+      .quantity {
+        padding-left: 15px;
+        padding-right: 15px;
+        font-weight: 800;
+        font-size: 4vw;
+        margin: auto;
+      }
+    }
+  }
+}
+
+ion-footer {
+  .toolbar {
+    padding-left: 10px;
+  }
+  ion-button {
+    height: 45px;
+    margin: 0;
+    margin-bottom: 0;
+  }
+}
+.zero-padding-horizontal {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.add-to-cart-top {
+  background: #6ab78a!important;
+  color: #ffffff!important;
+}
+.my-cart-view {
+  background: #6ab78a!important;
+}
+.ion-color-secondary {
+  --ion-color-base: #6ab78a !important;
+  --ion-color-base-rgb: var(--ion-color-secondary-rgb, 61, 194, 255) !important;
+  --ion-color-contrast: var(--ion-color-secondary-contrast, #fff) !important;
+  --ion-color-contrast-rgb: var(--ion-color-secondary-contrast-rgb, 255, 255, 255) !important;
+  --ion-color-shade: var(--ion-color-secondary-shade, #36abe0) !important;
+  --ion-color-tint: var(--ion-color-secondary-tint, #50c8ff) !important;
+}
+.product-proceed {
+  background: #6ab78a!important;
+}

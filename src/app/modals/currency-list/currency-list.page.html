@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button fill="clear" (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="ion-no-padding">{{"Select Currency"|translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-radio-group [(ngModel)]="currency" (ionChange)="updateCurrency($event)">
+      <ion-item *ngFor="let v of currencyList">
+        <ion-label>{{v.name}}</ion-label>
+        <ion-radio [value]="v"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
+</ion-content>

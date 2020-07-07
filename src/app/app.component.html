@@ -1,0 +1,126 @@
+<ion-app [class.green-theme]="config.appTheme=='green'" [class.plum-theme]="config.appTheme=='plum'"
+  [class.magnesium-theme]="config.appTheme=='magnesium'" [class.salmon-theme]="config.appTheme=='salmon'"
+  [class.blue-theme]="config.appTheme=='blue'" [class.pink-theme]="config.appTheme=='pink'"
+  [class.orange-theme]="config.appTheme=='orange'" [class.maroon-theme]="config.appTheme=='maroon'"
+  [class.cayanne-theme]="config.appTheme=='cayanne'" [class.red-theme]="config.appTheme=='red'"
+  [class.sea-theme]="config.appTheme=='sea'" [class.sky-theme]="config.appTheme=='sky'"
+  [class.grape-theme]="config.appTheme=='grape'" [class.dark-theme]="config.darkMode==true"
+  [class.light-theme]="config.darkMode==false" [class.default-theme]="config.appTheme=='default'"
+  [class.white-theme]="config.appTheme=='white'"
+  [class.black-theme]="config.appTheme=='black'"
+
+  [class.theme15]="config.appTheme=='theme15'"
+  [class.theme16]="config.appTheme=='theme16'"
+  [class.theme17]="config.appTheme=='theme17'"
+  [class.theme18]="config.appTheme=='theme18'"
+
+  [class.light-mode-plus-white-theme]="config.appTheme=='white' && config.darkMode==false"
+  [class.dark-mode-plus-white-theme]="config.appTheme=='white' && config.darkMode==true"
+  [class.light-mode-plus-black-theme]="config.appTheme=='default' && config.darkMode==false"
+  [class.dark-mode-plus-black-theme]="config.appTheme=='default' && config.darkMode==true"
+  class="copyPrimaryToSecondary">
+
+
+
+  <ion-split-pane contentId="main-content" content="main-content">
+    <ion-menu type="overlay" *ngIf="!config.appNavigationTabs" contentId="main-content" content="main-content">
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>{{ 'Menu' | translate:appPages }}</ion-title>
+          <ion-buttons slot="end">
+            <ion-button fill="clear" (click)="openCurrencyPage()" *ngIf="config.multiCurrency">
+              <ion-icon slot="icon-only" name="logo-usd"></ion-icon>
+            </ion-button>
+            <ion-button fill="clear" (click)="openLanguagePage()" *ngIf="config.multiLanguage">
+              <ion-icon name="globe"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list class="ion-no-padding">
+          <ion-item lines="none" *ngIf="shared.customerData.id==null" (click)="openLoginPage()">
+            <img id=backimage src="assets/icons_stripe.svg">
+            <div></div>
+            <ion-item lines="none">
+              <ion-avatar>
+                <img src="assets/avatar.png" />
+              </ion-avatar>
+              <ion-label class="ion-padding">
+                <h2>{{ 'Login & Register' | translate:appPages }}</h2>
+                <p>{{ 'Please login or create an account for free' | translate:appPages }}</p>
+              </ion-label>
+            </ion-item>
+          </ion-item>
+
+          <ion-item lines="none" *ngIf="shared.customerData.id!=null" (click)="openPage('/settings')">
+            <img id=backimage src="assets/icons_stripe.svg">
+            <div></div>
+            <ion-item lines="none">
+              <ion-avatar class="nameTextAvatar">
+                <ion-fab-button id="nametext">{{getNameFirstLetter()}}</ion-fab-button>
+              </ion-avatar>
+              <ion-label class="ion-padding">
+                <h2>{{shared.customerData.first_name +"&nbsp;"+shared.customerData.last_name}}</h2>
+                <p>{{shared.customerData.email}}</p>
+              </ion-label>
+            </ion-item>
+          </ion-item>
+
+          <ion-item lines="none" *ngFor="let p of appPages" class="ion-no-padding">
+            <ion-grid class="ion-no-padding">
+              <ion-row class="ion-no-padding" (click)="openPage(p.url)" *ngIf="!p.items">
+                <ion-col class="ion-align-self-center" size="2">
+                  <img *ngIf="showImg()" src="{{p.img}}">
+                  <ion-icon *ngIf="!showImg()" name="{{p.icon}}"></ion-icon>
+                </ion-col>
+                <ion-col class="col-text" class="ion-align-self-center" size="8">
+                  <p>
+                    {{p.name | translate}}
+                  </p>
+                </ion-col>
+              </ion-row>
+              <ion-row class="ion-no-padding" *ngIf="p.items" (click)="expandItem(p)">
+                <ion-col class="ion-align-self-center" size="2">
+                  <img *ngIf="showImg()" src="{{p.img}}">
+                  <ion-icon *ngIf="!showImg()" name="{{p.icon}}"></ion-icon>
+                </ion-col>
+                <ion-col class="col-text" class="ion-align-self-center" size="8">
+                  <p>
+                    {{p.name | translate}}
+                  </p>
+                </ion-col>
+                <ion-col class="ion-align-self-center" size="2">
+                  <ion-icon name="add" *ngIf="!p.expanded"></ion-icon>
+                  <ion-icon name="remove" *ngIf="p.expanded"></ion-icon>
+                </ion-col>
+              </ion-row>
+              <app-menu-component expandHeight="700px" *ngIf="p.items" [expanded]="p.expanded" class="ion-no-padding">
+                <ion-item class="item-inner-list" lines="full" *ngFor="let list of p.items;"
+                  (click)="openPage(list.url)">
+                  <ion-grid>
+                    <ion-row>
+                      <ion-col class="ion-align-self-center" size="2">
+                        <ion-icon name="remove"></ion-icon>
+                      </ion-col>
+                      <ion-col class="ion-align-self-center">
+                        <p><span *ngIf="p.name!='Shop'">{{p.name | translate}} - </span> {{list.name| translate}}</p>
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
+                </ion-item>
+              </app-menu-component>
+            </ion-grid>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+  <ion-fab class="ion-padding-start" vertical="bottom" horizontal="top" *ngIf="!config.appInProduction"
+    [class.margin50bottom]="config.appNavigationTabs">
+    <ion-fab-button (click)="openDemoSettings()" class="rotation-animation">
+      <ion-icon name="settings"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-app>

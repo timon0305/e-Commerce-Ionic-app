@@ -1,0 +1,30 @@
+
+
+ion-content{
+
+    ion-img{
+        margin-right: auto;
+        margin-left: auto;
+    }
+    h2{
+        padding-left: 8px;
+        font-size: 20px;
+        font-weight: bold;
+        small{
+            display:flex;
+            align-items:center;
+            font-size: 16px;
+            color: #747474;
+            font-weight:normal;
+            margin-top:5px;
+            .icon{
+                font-size: 18px;
+                margin-right: 5px;
+            }
+        }
+    }
+    p{
+        margin-top: auto;
+        padding-left: 8px;
+    }
+}

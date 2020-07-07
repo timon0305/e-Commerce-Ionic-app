@@ -1,0 +1,37 @@
+ion-content {
+  ion-row {
+    padding-left: 1px;
+    padding-right: 1px;
+    box-shadow: 0 0 0 2px lightgrey;
+    ion-col {
+      ion-card {
+        margin: 0;
+        border-radius: 0;
+        box-shadow: #eee;
+        box-shadow: 0.1px 0.1px 0 0 #bbb;
+
+        ion-avatar {
+          margin-left: auto;
+          margin-right: auto;
+          margin-top: 10px;
+        }
+        h6 {
+          font-weight: bold;
+          text-align: center;
+          margin-bottom: 0;
+          font-size: var(--heading-font-size);
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          color: var(--ion-text-color);
+        }
+        p {
+          color: rgba(var(--ion-text-color-rgb), 0.5);
+          text-align: center;
+          margin-top: 0;
+          font-size: var(--sub-heading-font-size);
+        }
+      }
+    }
+  }
+}

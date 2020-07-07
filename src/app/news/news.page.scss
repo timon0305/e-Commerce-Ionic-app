@@ -1,0 +1,82 @@
+.news-page {
+  ion-segment {
+    border-bottom: 1px solid #dedede;
+    ion-segment-button {
+      --indicator-color-checked: var(--ion-color-danger-tint) !important;
+      --color-checked: var(--ion-color-danger-tint);
+      --color: var(--ion-color-danger-tint);
+    }
+  }
+
+  ion-list {
+    ion-item {
+      ion-thumbnail {
+        margin-bottom: auto;
+      }
+      ion-label {
+        margin-top: 4px;
+        h2 {
+          font-size: 16px;
+          font-weight: bold;
+          white-space: normal;
+          small {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: #747474;
+            font-weight: normal;
+            margin-top: 5px;
+            ion-label {
+              padding-left: 4px;
+            }
+          }
+        }
+        p {
+          p:not(:first-child) {
+            display: none;
+          }
+          p:first-child {
+            white-space: normal;
+            line-height: 1.4;
+            -webkit-line-clamp: 4;
+            display: -webkit-box;
+            box-sizing: border-box;
+            -webkit-box-orient: vertical;
+          }
+        }
+      }
+    }
+  }
+
+  ion-grid {
+    ion-row {
+      ion-col {
+        ion-card {
+          ion-card-header {
+            ion-img {
+              height: 120px;
+              margin-left: auto;
+              margin-right: auto;
+            }
+          }
+          border-radius: 0;
+          box-shadow: none;
+          text-align: center;
+          margin: 0;
+          box-shadow: inset 0px 0.1px lightgrey;
+          ion-card-content {
+            ion-card-title {
+              font-size: 14px;
+              font-weight: bold;
+              color: #000;
+            }
+            ion-card-subtitle {
+              font-size: 14px;
+              color: #747474;
+            }
+          }
+        }
+      }
+    }
+  }
+}

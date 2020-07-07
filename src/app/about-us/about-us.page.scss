@@ -1,0 +1,20 @@
+
+ion-content{
+    ion-text{
+        p{
+            padding-left: 16px;
+            padding-right: 16px;
+
+        }
+    }
+    ion-list{
+        margin-left: 10px;
+        margin-right: 10px;
+        ion-item{
+            ion-icon{
+                color: black;
+                zoom: 1.1;
+            }
+        }
+    }
+}

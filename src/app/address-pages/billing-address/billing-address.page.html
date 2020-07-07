@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title> {{'Billing Address'| translate }} </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <form>
+    <ion-item>
+      <ion-label position="floating">{{'First Name'|translate}}</ion-label>
+      <ion-input type="text" name="shipping_firstname" [(ngModel)]="shared.billing.first_name" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">{{'Last Name'|translate}}</ion-label>
+      <ion-input type="text" name="shipping_lastname" [(ngModel)]="shared.billing.last_name" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">{{'Compnay'|translate}}</ion-label>
+      <ion-input type="text" name="company" [(ngModel)]="shared.billing.company"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">{{'Address'|translate}} 1</ion-label>
+      <ion-input type="text" name="address" [(ngModel)]="shared.billing.address_1" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">{{'Address'|translate}} 2</ion-label>
+      <ion-input type="text" name="address2" [(ngModel)]="shared.billing.address_2"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">{{'Country'|translate}}</ion-label>
+      <ion-input type="text" name="shipping_country" tappable (click)="selectCountryPage()" readonly
+        [(ngModel)]="shared.billingCountryName" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">{{'State'|translate}}</ion-label>
+      <ion-input type="text" required name="shipping_zone" tappable (click)="selectZonePage()" readonly
+        [(ngModel)]="shared.billingStateName"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">{{'City'|translate}}</ion-label>
+      <ion-input type="text" name="shipping_city" [(ngModel)]="shared.billing.city" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">{{'Post code'|translate}}</ion-label>
+      <ion-input type="text" name="shipping_postcode" [(ngModel)]="shared.billing.postcode" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">{{'Email'|translate}}</ion-label>
+      <ion-input type="email" name="email" [(ngModel)]="shared.billing.email" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">{{'Phone'|translate}}</ion-label>
+      <ion-input type="tel" name="Phone" [(ngModel)]="shared.billing.phone" required></ion-input>
+    </ion-item>
+  </form>
+
+</ion-content>
+
+<ion-footer>
+  <ion-button expand="full" color="secondary" (click)="submit()" [disabled]="disableButton()">{{'Next'|translate}}
+  </ion-button>
+</ion-footer>

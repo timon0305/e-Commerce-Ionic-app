@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" *ngIf="name!=0">
+      <ion-back-button icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+    <ion-menu-button slot="start" *ngIf="name=='Categories' && !config.appNavigationTabs">
+      <ion-icon name="menu"></ion-icon>
+    </ion-menu-button>
+    <ion-title>
+      {{name|translate}}
+    </ion-title>
+    <ion-buttons slot="end" *ngIf="!config.appNavigationTabs">
+      <ion-button fill="clear" routerLink="/search" routerDirection="forward">
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" routerLink="/cart" routerDirection="forward">
+        <ion-icon name="basket"></ion-icon>
+        <ion-badge color="secondary">{{shared.cartTotalItems()}}</ion-badge>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-text-center">
+  <ion-grid class="ion-no-padding">
+    <ion-row class="ion-no-padding">
+      <ion-col *ngFor="let c of shared.getCategoriesPageItems(parent)" (click)="openProducts(c.id,c.name)"
+        class="animate-item" size="6" class="ion-no-padding">
+        <ion-card>
+          <ion-avatar>
+            <img *ngIf="c.image" src="{{c.image.src}}" />
+            <img *ngIf="!c.image" src="assets/placeholder.png" />
+          </ion-avatar>
+          <ion-text>
+            <h6>{{c.name|translate}}</h6>
+            <p>{{c.count}} {{'Products'| translate }}</p>
+          </ion-text>
+        </ion-card>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+
+
+  <ion-button *ngIf="parent!=0" icon-end clear color="secondary" (click)="openParentProducts()">
+    {{ 'View All' | translate }}
+    <ion-icon name="caret-forward"></ion-icon>
+  </ion-button>
+
+
+
+</ion-content>

@@ -1,0 +1,34 @@
+ion-content {
+  .swiper-slide {
+    width: 40%;
+  }
+  // if data load
+  ion-segment {
+    ion-segment-button {
+      font-size: 0.75rem;
+    }
+  }
+  ion-slides {
+    ion-slide {
+      &:last-child {
+        height: auto;
+      }
+    }
+  }
+  app-product {
+    width: 100%;
+  }
+
+  ion-fab {
+    position: fixed;
+    ion-fab-button {
+      --background: var(--ion-color-primary);
+    }
+  }
+}
+
+ion-grid {
+  ion-row {
+    margin-right: 10px;
+  }
+}

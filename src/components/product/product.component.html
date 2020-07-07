@@ -1,0 +1,823 @@
+<div class="product-component animate-item">
+  <!-- skeleton text until data not loaded -->
+  <div *ngIf="p==1" style="padding-left: 10px;" class="ion-text-center">
+    <ion-skeleton-text animated style="width: 100%; height: 130px;"></ion-skeleton-text>
+    <ion-skeleton-text animated style="width: 80%; height: 15px;"></ion-skeleton-text>
+    <ion-skeleton-text animated style="width: 100%; height: 15px;">
+    </ion-skeleton-text>
+  </div>
+
+  <div *ngIf="p!=1" class="animated fadeIn">
+    <div *ngIf="type=='normal' || type=='recent' || type=='wishList'">
+
+      <!---------------------------------------------------------  style default -------------------------------->
+      <ion-card class="default" *ngIf="config.productCardStyle==1">
+        <div>
+          <div *ngIf="p.on_sale==true">{{ 'Sale' | translate }}</div>
+          <div *ngIf="p.featured">{{'Featured' | translate }}</div>
+        </div>
+        <ion-img id="newimage" src="assets/badge_new.png" *ngIf="checkProductNew()"></ion-img>
+        <img id="image" [src]="getProductImage()" (click)="showProductDetail()">
+        <p (click)="showProductDetail()" class="name">{{p.name}}</p>
+        <ion-grid class="ion-no-padding">
+          <ion-row class="ion-no-padding">
+            <ion-col size="10" class="ion-no-padding">
+              <h4 class="price" [innerHTML]="p.price_html"></h4>
+            </ion-col>
+            <ion-col size="2" class="ion-text-center ion-no-padding">
+              <ion-icon (click)="clickWishList()" [name]="getHeartName()"></ion-icon>
+            </ion-col>
+          </ion-row>
+          <ion-row class="ion-no-padding" *ngIf="type=='recent' || type=='wishList'">
+            <ion-button style="z-index: 10;" color="danger" (click)="removeProduct(type)">
+              {{'REMOVE'|translate}}</ion-button>
+          </ion-row>
+          <ion-row class="ion-no-padding recent-remove" *ngIf="type=='normal'">
+            <ion-button [color]="getButtonColor()" (click)="buttonClick()">{{getButtonText()|translate}}
+            </ion-button>
+          </ion-row>
+        </ion-grid>
+        <ion-row class="card-add-cart" *ngIf="isInCart()" (click)="showProductDetail()">
+          <ion-icon name="checkmark-circle"></ion-icon>
+        </ion-row>
+      </ion-card>
+
+
+
+      <!---------------------------------------------------------  style 1-------------------------------->
+      <ion-card class="style21 ion-text-center" *ngIf="config.productCardStyle==21">
+
+        <div class="main-img"><img id="image" [src]="getProductImage()" (click)="showProductDetail()"></div>
+        <p (click)="showProductDetail()" class="name">{{p.name}}</p>
+        <ion-grid class="ion-no-padding">
+          <ion-row class="ion-no-padding">
+            <ion-col>
+              <span [innerHTML]="p.price_html" class="price"></span>
+            </ion-col>
+          </ion-row>
+          <ion-row class="ion-no-padding" *ngIf="type=='recent' || type=='wishList'">
+            <ion-button class="bottom-big-button" color="danger" (click)="removeProduct(type)">
+              {{'REMOVE'|translate}}</ion-button>
+          </ion-row>
+        </ion-grid>
+        <ion-row class="card-add-cart" *ngIf="isInCart()" (click)="showProductDetail()">
+          <ion-icon name="checkmark-circle"></ion-icon>
+        </ion-row>
+      </ion-card>
+
+
+      <!---------------------------------------------------------  style 2 -------------------------------->
+      <ion-card class="style11 ion-text-center" *ngIf="config.productCardStyle==11">
+        <div class="main-img"><img id="image" [src]="getProductImage()" (click)="showProductDetail()"></div>
+        <p (click)="showProductDetail()" class="name">{{p.name}}</p>
+        <ion-grid class="ion-no-padding">
+          <ion-row class="ion-no-padding">
+            <ion-col>
+              <span [innerHTML]="p.price_html" class="price"></span>
+            </ion-col>
+          </ion-row>
+          <ion-row class="ion-no-padding" *ngIf="type=='recent' || type=='wishList'">
+            <ion-button class="bottom-big-button" color="danger" (click)="removeProduct(type)">
+              {{'REMOVE'|translate}}</ion-button>
+          </ion-row>
+        </ion-grid>
+        <ion-row class="card-add-cart" *ngIf="isInCart()" (click)="showProductDetail()">
+          <ion-icon name="checkmark-circle"></ion-icon>
+        </ion-row>
+
+        <ion-icon (click)="clickWishList()" color="secondary" class="heart-top-right" [name]="getHeartName()">
+        </ion-icon>
+      </ion-card>
+
+
+      <!---------------------------------------------------------  style  -------------------------------->
+      <ion-card class="default" *ngIf="config.productCardStyle==2">
+        <div>
+          <div *ngIf="p.on_sale==true">{{ 'Sale' | translate }}</div>
+          <div *ngIf="p.featured">{{'Featured' | translate }}</div>
+        </div>
+        <ion-img id="newimage" src="assets/badge_new.png" *ngIf="checkProductNew()"></ion-img>
+        <img id="image" [src]="getProductImage()" (click)="showProductDetail()">
+        <p (click)="showProductDetail()" class="name">{{p.name}}</p>
+        <ion-grid class="ion-no-padding">
+          <ion-row class="ion-no-padding">
+            <ion-col size="10" class="ion-no-padding">
+              <h4 class="price" [innerHTML]="p.price_html"></h4>
+            </ion-col>
+            <ion-col size="2" class="ion-text-center ion-no-padding">
+              <ion-icon (click)="clickWishList()" [name]="getHeartName()"></ion-icon>
+            </ion-col>
+          </ion-row>
+          <ion-row class="ion-no-padding" *ngIf="type=='recent' || type=='wishList'">
+            <ion-button style="z-index: 10;" color="danger" (click)="removeProduct(type)">
+              {{'REMOVE'|translate}}</ion-button>
+          </ion-row>
+        </ion-grid>
+        <ion-row class="card-add-cart" *ngIf="isInCart()" (click)="showProductDetail()">
+          <ion-icon name="checkmark-circle"></ion-icon>
+        </ion-row>
+      </ion-card>
+
+      <!--------------------------------------------------------- style   -------------------------------->
+
+      <ion-card class="style3 ion-text-start" *ngIf="config.productCardStyle==3">
+
+        <div class="main-image">
+          <ion-badge color="primary" class="ion-text-start" mode=ios *ngIf="pDiscount()">{{pDiscount()}}
+            <span>{{'OFF'|translate}}</span>
+          </ion-badge>
+          <img id="image" [src]="getProductImage()" (click)="showProductDetail()">
+        </div>
+
+        <ion-grid class="ion-no-padding">
+          <ion-row class="ion-no-padding">
+            <ion-col>
+              <p (click)="showProductDetail()" class="name">{{p.name}}</p>
+              <p class="category">({{getCategoryName()}})</p>
+            </ion-col>
+          </ion-row>
+
+          <ion-row class="ion-no-padding">
+            <ion-col size="10">
+              <span [innerHTML]="p.price_html" class="price"></span>
+            </ion-col>
+            <ion-col size="2">
+              <ion-icon (click)="buttonClick()" class="ion-float-end" [color]="getButtonColor()" name="basket">
+              </ion-icon>
+            </ion-col>
+          </ion-row>
+          <ion-row class="ion-no-padding" *ngIf="type=='recent' || type=='wishList'">
+            <ion-button class="bottom-big-button" color="danger" (click)="removeProduct(type)">
+              {{'REMOVE'|translate}}</ion-button>
+          </ion-row>
+        </ion-grid>
+
+        <ion-row class="card-add-cart" *ngIf="isInCart()" (click)="showProductDetail()">
+          <ion-icon name="checkmark-circle"></ion-icon>
+        </ion-row>
+
+
+      </ion-card>
+
+
+      <!--------------------------------------------------------- style   -------------------------------->
+
+      <ion-card class="style6 ion-text-start" *ngIf="config.productCardStyle==6">
+
+        <div class="main-image">
+          <img id="image" [src]="getProductImage()" (click)="showProductDetail()">
+          <ion-fab-button size=small color="danger">
+            <ion-icon (click)="buttonClick()" name="basket">
+            </ion-icon>
+          </ion-fab-button>
+        </div>
+
+        <ion-grid class="ion-no-padding">
+          <ion-row class="ion-no-padding">
+            <ion-col>
+              <p (click)="showProductDetail()" class="name">{{p.name}}</p>
+            </ion-col>
+          </ion-row>
+
+          <ion-row class="ion-no-padding colum-2">
+            <ion-col>
+              <span [innerHTML]="p.price_html" class="price"></span>
+              <span class="product-ratings ion-float-right" *ngIf="p.reviews_allowed">
+                <div class="stars-outer">
+                  <div class="stars-inner" [style.width]="getRating()"></div>
+                </div>
+              </span>
+            </ion-col>
+          </ion-row>
+          <ion-row class="ion-no-padding" *ngIf="type=='recent' || type=='wishList'">
+            <ion-button class="bottom-big-button" color="danger" (click)="removeProduct(type)">
+              {{'REMOVE'|translate}}</ion-button>
+          </ion-row>
+        </ion-grid>
+
+        <ion-row class="card-add-cart" *ngIf="isInCart()" (click)="showProductDetail()">
+          <ion-icon name="checkmark-circle"></ion-icon>
+        </ion-row>
+
+
+      </ion-card>
+
+      <!--------------------------------------------------------- style   -------------------------------->
+
+      <ion-card class="style8 ion-text-start" *ngIf="config.productCardStyle==8">
+        <img id="image" [src]="getProductImage()" (click)="showProductDetail()">
+        <ion-grid class="ion-no-padding">
+          <ion-row class="ion-no-padding">
+            <ion-col>
+              <p (click)="showProductDetail()" class="name">{{p.name}}</p>
+            </ion-col>
+          </ion-row>
+
+          <ion-row class="ion-no-padding">
+            <ion-col>
+              <span [innerHTML]="p.price_html" class="price"></span>
+            </ion-col>
+          </ion-row>
+
+          <ion-row class="ion-no-padding">
+            <ion-col>
+              <span class="product-ratings" *ngIf="p.reviews_allowed">
+                <div class="stars-outer">
+                  <div class="stars-inner" [style.width]="getRating()"></div>
+                </div>
+                <div class="rating-value">({{getParsedRating()}})</div>
+              </span>
+            </ion-col>
+          </ion-row>
+
+          <ion-row class="ion-no-padding" *ngIf="type=='recent' || type=='wishList'">
+            <ion-button class="bottom-big-button" color="danger" (click)="removeProduct(type)">
+              {{'REMOVE'|translate}}</ion-button>
+          </ion-row>
+        </ion-grid>
+
+        <ion-row class="card-add-cart" *ngIf="isInCart()" (click)="showProductDetail()">
+          <ion-icon name="checkmark-circle"></ion-icon>
+        </ion-row>
+
+        <ion-icon (click)="clickWishList()" color="secondary" class="heart-top-right" [name]="getHeartName()">
+        </ion-icon>
+      </ion-card>
+
+      <!--------------------------------------------------------- style   -------------------------------->
+
+      <ion-card class="style9 ion-text-start" *ngIf="config.productCardStyle==9">
+
+        <div class="main-image">
+          <img id="image" [src]="getProductImage()" (click)="showProductDetail()">
+          <ion-fab-button size=small color="danger">
+            <ion-icon (click)="clickWishList()" [name]="getHeartName()">
+            </ion-icon>
+          </ion-fab-button>
+        </div>
+
+        <ion-grid class="ion-no-padding">
+          <ion-row class="ion-no-padding">
+            <ion-col>
+              <p (click)="showProductDetail()" class="name">{{p.name}}</p>
+            </ion-col>
+          </ion-row>
+
+          <ion-row class="ion-no-padding">
+            <ion-col size=6>
+              <span [innerHTML]="p.price_html" class="price"></span>
+            </ion-col>
+            <ion-col size=6>
+              <span class="product-ratings ion-float-right" *ngIf="p.reviews_allowed">
+                <div class="stars-outer">
+                  <div class="stars-inner" [style.width]="getRating()"></div>
+                </div>
+              </span>
+            </ion-col>
+          </ion-row>
+          <ion-row class="ion-no-padding" *ngIf="type=='recent' || type=='wishList'">
+            <ion-button class="bottom-big-button" color="danger" (click)="removeProduct(type)">
+              {{'REMOVE'|translate}}</ion-button>
+          </ion-row>
+        </ion-grid>
+
+        <ion-row class="card-add-cart" *ngIf="isInCart()" (click)="showProductDetail()">
+          <ion-icon name="checkmark-circle"></ion-icon>
+        </ion-row>
+
+
+      </ion-card>
+
+      <!---------------------------------------------------------  style  -------------------------------->
+      <ion-card class="style12" *ngIf="config.productCardStyle==12">
+        <img id="image" [src]="getProductImage()" (click)="showProductDetail()">
+        <ion-grid class="ion-no-padding">
+          <ion-row class="ion-no-padding">
+            <ion-col>
+              <p (click)="showProductDetail()" class="name ion-text-start">{{p.name}}</p>
+            </ion-col>
+          </ion-row>
+          <ion-row class="ion-no-padding">
+            <ion-col>
+              <span [innerHTML]="p.price_html" class="price ion-text-end"></span>
+            </ion-col>
+          </ion-row>
+          <ion-row class="ion-no-padding" *ngIf="type=='recent' || type=='wishList'">
+            <ion-button class="bottom-big-button" color="danger" (click)="removeProduct(type)">
+              {{'REMOVE'|translate}}</ion-button>
+          </ion-row>
+        </ion-grid>
+
+        <ion-row class="card-add-cart" *ngIf="isInCart()" (click)="showProductDetail()">
+          <ion-icon name="checkmark-circle"></ion-icon>
+        </ion-row>
+
+        <ion-icon (click)="clickWishList()" color="secondary" class="heart-top-right" [name]="getHeartName()">
+        </ion-icon>
+      </ion-card>
+
+
+      <!---------------------------------------------------------  style  -------------------------------->
+
+      <ion-card class="style5 ion-text-center" *ngIf="config.productCardStyle==5">
+        <img id="image" [src]="getProductImage()" (click)="showProductDetail()">
+        <ion-grid class="ion-no-padding">
+          <ion-row class="ion-no-padding">
+            <ion-col>
+              <p (click)="showProductDetail()" class="name">{{p.name}}</p>
+            </ion-col>
+          </ion-row>
+
+          <ion-row class="ion-no-padding">
+            <ion-col size="2">
+              <ion-icon (click)="clickWishList()" color="secondary" [name]="getHeartName()">
+              </ion-icon>
+            </ion-col>
+            <ion-col size="8">
+              <span [innerHTML]="p.price_html" class="price"></span>
+            </ion-col>
+            <ion-col size="2">
+              <ion-icon (click)="buttonClick()" [color]="getButtonColor()" name="basket">
+              </ion-icon>
+            </ion-col>
+          </ion-row>
+          <ion-row class="ion-no-padding" *ngIf="type=='recent' || type=='wishList'">
+            <ion-button class="bottom-big-button" color="danger" (click)="removeProduct(type)">
+              {{'REMOVE'|translate}}</ion-button>
+          </ion-row>
+        </ion-grid>
+
+        <ion-row class="card-add-cart" *ngIf="isInCart()" (click)="showProductDetail()">
+          <ion-icon name="checkmark-circle"></ion-icon>
+        </ion-row>
+
+
+      </ion-card>
+
+      <!---------------------------------------------------------  style  -------------------------------->
+      <ion-card class="style7" *ngIf="config.productCardStyle==7">
+        <div class="floating-tags">
+          <span class="ion-no-padding ion-text-left" *ngIf="p.on_sale">
+            <ion-badge color="secondary" class="first">
+              {{ 'Sale' | translate }}</ion-badge>
+          </span>
+          <span class="ion-no-padding ion-text-left" *ngIf="p.featured">
+            <ion-badge color="danger" class="second">
+              {{'Featured' | translate }}</ion-badge>
+          </span>
+        </div>
+        <ion-img id="newimage" src="assets/badge_new.png" *ngIf="checkProductNew()"></ion-img>
+        <img id="image" [src]="getProductImage()" (click)="showProductDetail()">
+        <p (click)="showProductDetail()" class="name">{{p.name}}</p>
+        <ion-grid class="ion-no-padding">
+          <ion-row class="ion-no-padding">
+            <ion-col size="10" class="ion-no-padding">
+              <h4 [innerHTML]="p.price_html" class="price"></h4>
+            </ion-col>
+            <ion-col size="2" class="ion-text-center ion-no-padding">
+              <ion-icon (click)="clickWishList()" [name]="getHeartName()"></ion-icon>
+            </ion-col>
+          </ion-row>
+          <ion-row class="ion-no-padding" *ngIf="type=='recent' || type=='wishList'">
+            <ion-button style="z-index: 10;" color="danger" (click)="removeProduct(type)">
+              {{'REMOVE'|translate}}</ion-button>
+          </ion-row>
+        </ion-grid>
+        <ion-row class="card-add-cart" *ngIf="isInCart()" (click)="showProductDetail()">
+          <ion-icon name="checkmark-circle"></ion-icon>
+        </ion-row>
+      </ion-card>
+      <!--------------------------------------------------------- style   -------------------------------->
+
+      <ion-card class="style13 ion-text-center" *ngIf="config.productCardStyle==13">
+
+        <ion-badge color="light" class="heart-top-right price">
+          <span [innerHTML]="p.price_html" class="innerprice"></span>
+        </ion-badge>
+
+        <div class="main-image">
+          <img id="image" [src]="getProductImage()" (click)="showProductDetail()">
+          <ion-grid class="floating-tags">
+            <ion-row class="ion-no-padding" *ngIf="p.on_sale==true">
+              <ion-badge color="secondary">
+                {{ 'Sale' | translate }}</ion-badge>
+            </ion-row>
+            <ion-row class="ion-no-padding" *ngIf="p.featured">
+              <ion-badge color="danger">
+                {{'Featured' | translate }}</ion-badge>
+            </ion-row>
+          </ion-grid>
+        </div>
+
+        <ion-grid class="ion-no-padding">
+          <ion-row class="ion-no-padding">
+            <ion-col>
+              <p (click)="showProductDetail()" class="name">{{p.name}}</p>
+            </ion-col>
+          </ion-row>
+          <ion-row class="ion-no-padding paddingb5">
+            <ion-col>
+              <span class="product-ratings" *ngIf="p.reviews_allowed">
+                <div class="stars-outer">
+                  <div class="stars-inner" [style.width]="getRating()"></div>
+                </div>
+              </span>
+            </ion-col>
+          </ion-row>
+          <ion-row class="ion-no-padding" *ngIf="type=='recent' || type=='wishList'">
+            <ion-button class="bottom-big-button" color="danger" (click)="removeProduct(type)">
+              {{'REMOVE'|translate}}</ion-button>
+          </ion-row>
+        </ion-grid>
+
+        <ion-row class="card-add-cart" *ngIf="isInCart()" (click)="showProductDetail()">
+          <ion-icon name="checkmark-circle"></ion-icon>
+        </ion-row>
+
+
+      </ion-card>
+
+      <!--------------------------------------------------------- style   -------------------------------->
+
+      <ion-card class="style15 ion-text-center" *ngIf="config.productCardStyle==15">
+
+        <ion-row class="ion-no-padding">
+          <ion-col>
+            <p (click)="showProductDetail()" class="name">{{p.name}}</p>
+          </ion-col>
+        </ion-row>
+        <div class="main-image">
+          <img id="image" [src]="getProductImage()" (click)="showProductDetail()">
+        </div>
+
+        <ion-grid class="ion-no-padding">
+          <ion-row class="ion-no-padding">
+            <ion-col>
+              <span [innerHTML]="p.price_html" class="price"></span>
+            </ion-col>
+          </ion-row>
+
+          <ion-row class="ion-no-padding">
+            <ion-col class="rating-colum">
+              <span class="product-ratings" *ngIf="p.reviews_allowed">
+                <div class="stars-outer">
+                  <div class="stars-inner" [style.width]="getRating()"></div>
+                </div>
+              </span>
+            </ion-col>
+          </ion-row>
+          <ion-row class="ion-no-padding" *ngIf="type=='recent' || type=='wishList'">
+            <ion-button class="bottom-big-button" color="danger" (click)="removeProduct(type)">
+              {{'REMOVE'|translate}}</ion-button>
+          </ion-row>
+        </ion-grid>
+
+        <ion-row class="card-add-cart" *ngIf="isInCart()" (click)="showProductDetail()">
+          <ion-icon name="checkmark-circle"></ion-icon>
+        </ion-row>
+
+
+      </ion-card>
+      <!--------------------------------------------------------- style   -------------------------------->
+
+      <ion-card class="style16 ion-text-start" *ngIf="config.productCardStyle==16">
+
+        <div class="main-image">
+          <img id="image" [src]="getProductImage()" (click)="showProductDetail()">
+
+
+          <ion-grid class="ion-no-padding">
+            <ion-row class="ion-no-padding">
+              <ion-col>
+                <span [innerHTML]="p.price_html" class="price"></span>
+              </ion-col>
+            </ion-row>
+
+            <ion-row class="ion-no-padding">
+              <ion-col>
+                <span class="product-ratings ion-float-left" *ngIf="p.reviews_allowed">
+                  <div class="stars-outer">
+                    <div class="stars-inner" [style.width]="getRating()"></div>
+                  </div>
+                </span>
+
+                <ion-icon (click)="clickWishList()" color="secondary" class="ion-float-right" [name]="getHeartName()">
+                </ion-icon>
+              </ion-col>
+            </ion-row>
+            <ion-row class="ion-no-padding" *ngIf="type=='recent' || type=='wishList'">
+              <ion-button class="bottom-big-button" color="danger" (click)="removeProduct(type)">
+                {{'REMOVE'|translate}}</ion-button>
+            </ion-row>
+          </ion-grid>
+        </div>
+        <ion-row class="card-add-cart" *ngIf="isInCart()" (click)="showProductDetail()">
+          <ion-icon name="checkmark-circle"></ion-icon>
+        </ion-row>
+      </ion-card>
+
+      <!---------------------------------------------------------  style default -------------------------------->
+      <ion-card class="default style17" *ngIf="config.productCardStyle==17">
+
+        <img id="image" [src]="getProductImage()" (click)="showProductDetail()">
+        <ion-icon (click)="clickWishList()" color="secondary" class="heart-top-right" [name]="getHeartName()">
+        </ion-icon>
+        <p (click)="showProductDetail()" class="name">{{p.name}}</p>
+        <ion-grid class="ion-no-padding">
+          <ion-row class="ion-no-padding">
+            <ion-col size=8 class="ion-no-padding">
+              <h4 class="price" [innerHTML]="p.price_html"></h4>
+            </ion-col>
+            <ion-col size=4 class="ion-text-center ion-no-padding">
+              <ion-text class="price">
+                <ion-icon name="star"></ion-icon>{{getParsedRating()}}
+              </ion-text>
+            </ion-col>
+          </ion-row>
+          <ion-row class="ion-no-padding" *ngIf="type=='recent' || type=='wishList'">
+            <ion-button style="z-index: 10;" color="danger" (click)="removeProduct(type)">
+              {{'REMOVE'|translate}}</ion-button>
+          </ion-row>
+          <ion-row class="ion-no-padding" *ngIf="type=='normal'">
+            <ion-button [color]="getButtonColor()" (click)="buttonClick()">{{getButtonText()|translate}}
+            </ion-button>
+          </ion-row>
+        </ion-grid>
+        <ion-row class="card-add-cart" *ngIf="isInCart()" (click)="showProductDetail()">
+          <ion-icon name="checkmark-circle"></ion-icon>
+        </ion-row>
+      </ion-card>
+
+
+      <!--------------------------------------------------------- style   -------------------------------->
+
+      <ion-card class="style3 style18 ion-text-start" *ngIf="config.productCardStyle==18">
+
+        <div class="main-image">
+          <img id="image" [src]="getProductImage()" (click)="showProductDetail()">
+        </div>
+
+        <ion-grid class="ion-no-padding">
+          <ion-row class="ion-no-padding">
+            <ion-col>
+              <p (click)="showProductDetail()" class="name">{{p.name}}</p>
+              <p class="category">({{getCategoryName()}})</p>
+            </ion-col>
+          </ion-row>
+
+          <ion-row class="ion-no-padding">
+            <ion-col size=7>
+              <span [innerHTML]="p.price_html" class="price"></span>
+            </ion-col>
+            <ion-col size=5 class="cart">
+              <ion-icon name="remove" (click)="removingToCart()"></ion-icon>
+              <ion-text>
+                <p>{{cartQuantity}}</p>
+              </ion-text>
+              <ion-icon name="add" (click)="addingToCart()"></ion-icon>
+            </ion-col>
+          </ion-row>
+          <ion-row class="ion-no-padding" *ngIf="type=='recent' || type=='wishList'">
+            <ion-button class="bottom-big-button" color="danger" (click)="removeProduct(type)">
+              {{'REMOVE'|translate}}</ion-button>
+          </ion-row>
+        </ion-grid>
+      </ion-card>
+      <!--------------------------------------------------------- style   -------------------------------->
+
+      <ion-card class="style9 style19 ion-text-start" *ngIf="config.productCardStyle==19">
+
+        <div class="main-image">
+          <img id="image" [src]="getProductImage()" (click)="showProductDetail()">
+          <ion-icon (click)="clickWishList()" color="secondary" class="heart-top-right" [name]="getHeartName()">
+          </ion-icon>
+          <ion-grid class="floating-tags">
+            <ion-row class="ion-no-padding" *ngIf="p.on_sale==true">
+              <ion-badge>
+                {{ 'Sale' | translate }}</ion-badge>
+            </ion-row>
+            <ion-row class="ion-no-padding" *ngIf="p.featured">
+              <ion-badge>
+                {{'Featured' | translate }}</ion-badge>
+            </ion-row>
+          </ion-grid>
+        </div>
+
+        <ion-grid class="ion-no-padding">
+          <ion-row class="ion-no-padding">
+            <ion-col>
+              <p (click)="showProductDetail()" class="name">{{p.name}}</p>
+            </ion-col>
+          </ion-row>
+
+          <ion-row class="ion-no-padding">
+            <ion-col>
+              <span [innerHTML]="p.price_html" class="price"></span>
+              <span class="product-ratings ion-float-right" *ngIf="p.reviews_allowed">
+                <div class="stars-outer">
+                  <div class="stars-inner" [style.width]="getRating()"></div>
+                </div>
+              </span>
+            </ion-col>
+          </ion-row>
+          <ion-row class="ion-no-padding" *ngIf="type=='recent' || type=='wishList'">
+            <ion-button class="bottom-big-button" color="danger" (click)="removeProduct(type)">
+              {{'REMOVE'|translate}}</ion-button>
+          </ion-row>
+        </ion-grid>
+        <ion-row class="card-add-cart" *ngIf="isInCart()" (click)="showProductDetail()">
+          <ion-icon name="checkmark-circle"></ion-icon>
+        </ion-row>
+      </ion-card>
+      <!---------------------------------------------------------  style  -------------------------------->
+
+      <ion-card class="style4 ion-text-center" *ngIf="config.productCardStyle==4">
+
+        <img id="image" [src]="getProductImage()" (click)="showProductDetail()">
+        <ion-grid class="ion-no-padding">
+          <ion-row class="ion-no-padding">
+            <ion-col>
+              <p (click)="showProductDetail()" class="name">{{p.name}}</p>
+            </ion-col>
+          </ion-row>
+
+          <ion-row class="ion-no-padding">
+            <ion-col size="6">
+              <span [innerHTML]="p.price_html" class="price"></span>
+            </ion-col>
+            <ion-col size="6">
+              <ion-badge [color]="getButtonColor()" (click)="buttonClick()" class="ellipsis">
+                <span>{{getButtonText()|translate}}</span>
+              </ion-badge>
+            </ion-col>
+          </ion-row>
+
+          <ion-row class="ion-no-padding" *ngIf="type=='recent' || type=='wishList'">
+            <ion-button class="bottom-big-button" color="danger" (click)="removeProduct(type)">
+              {{'REMOVE'|translate}}</ion-button>
+          </ion-row>
+        </ion-grid>
+
+        <ion-row class="card-add-cart" *ngIf="isInCart()" (click)="showProductDetail()">
+          <ion-icon name="checkmark-circle"></ion-icon>
+        </ion-row>
+      </ion-card>
+
+      <!---------------------------------------------------------  style -------------------------------->
+      <ion-card class="style20 ion-text-center" *ngIf="config.productCardStyle==20">
+        <div class="main-img">
+          <img id="image" [src]="getProductImage()" (click)="showProductDetail()">
+
+          <div class="buttons-img">
+
+            <ion-button size="small" [color]="getButtonColor()" (click)="buttonClick()">
+              {{getButtonText()|translate}}
+              <ion-icon slot="end" name="basket"></ion-icon>
+            </ion-button>
+            <ion-button size="small" color="secondary" (click)="clickWishList()">
+              <ion-icon slot="icon-only" [name]="getHeartName()"></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+        <p class="category">{{getCategoryName()}}</p>
+        <p (click)="showProductDetail()" class="name">{{p.name}}</p>
+        <ion-grid class="ion-no-padding">
+          <ion-row class="ion-no-padding">
+            <ion-col>
+              <span [innerHTML]="p.price_html" class="price"></span>
+            </ion-col>
+          </ion-row>
+          <ion-row class="ion-no-padding" *ngIf="type=='recent' || type=='wishList'">
+            <ion-button class="bottom-big-button" color="danger" (click)="removeProduct(type)">
+              {{'REMOVE'|translate}}</ion-button>
+          </ion-row>
+        </ion-grid>
+        <ion-row class="card-add-cart" *ngIf="isInCart()" (click)="showProductDetail()">
+          <ion-icon name="checkmark-circle"></ion-icon>
+        </ion-row>
+      </ion-card>
+
+      <!--------------------------------------------------------- style   -------------------------------->
+
+      <ion-card class="style3 style18 ion-text-start" *ngIf="config.productCardStyle==22">
+
+        <div class="main-image">
+          <img id="image" [src]="getProductImage()" (click)="showProductDetail()">
+        </div>
+
+        <ion-grid class="ion-no-padding">
+          <ion-row class="ion-no-padding">
+            <ion-col>
+              <p (click)="showProductDetail()" class="name">{{p.name}}</p>
+              <p class="category">({{getCategoryName()}})</p>
+            </ion-col>
+          </ion-row>
+
+          <ion-row class="ion-no-padding">
+            <ion-col size=7>
+              <span [innerHTML]="p.price_html" class="price"></span>
+            </ion-col>
+            <ion-col size=5 class="cart">
+              <ion-icon name="remove-circle" (click)="removingToCart()"></ion-icon>
+              <ion-text>
+                <p>{{cartQuantity}}</p>
+              </ion-text>
+              <ion-icon name="add-circle" (click)="addingToCart()"></ion-icon>
+            </ion-col>
+          </ion-row>
+          <ion-row class="ion-no-padding" *ngIf="type=='recent' || type=='wishList'">
+            <ion-button class="bottom-big-button" color="danger" (click)="removeProduct(type)">
+              {{'REMOVE'|translate}}</ion-button>
+          </ion-row>
+        </ion-grid>
+      </ion-card>
+      <!--------------------------------------------------------- style   -------------------------------->
+
+      <ion-card class="style10 ion-text-center" *ngIf="config.productCardStyle==10">
+
+        <div class="main-image">
+          <ion-badge color="light" mode=ios [innerHTML]="p.price_html" class="price">
+          </ion-badge>
+          <img id="image" [src]="getProductImage()" (click)="showProductDetail()">
+        </div>
+
+        <ion-grid class="ion-no-padding">
+          <ion-row class="ion-no-padding">
+            <ion-col>
+              <p (click)="showProductDetail()" class="name">{{p.name}}</p>
+              <p class="category">({{getCategoryName()}})</p>
+            </ion-col>
+          </ion-row>
+          <ion-row class="ion-no-padding" *ngIf="type=='recent' || type=='wishList'">
+            <ion-button class="bottom-big-button" color="danger" (click)="removeProduct(type)">
+              {{'REMOVE'|translate}}</ion-button>
+          </ion-row>
+        </ion-grid>
+        <ion-row class="card-add-cart" *ngIf="isInCart()" (click)="showProductDetail()">
+          <ion-icon name="checkmark-circle"></ion-icon>
+        </ion-row>
+      </ion-card>
+
+
+      <!---------------------------------------------------------  style  -------------------------------->
+      <ion-card class="default style14 ion-text-center" *ngIf="config.productCardStyle==14">
+        <img id="image" [src]="getProductImage()" (click)="showProductDetail()">
+        <ion-icon (click)="clickWishList()" color="secondary" class="heart-top-right" [name]="getHeartName()">
+        </ion-icon>
+        <p (click)="showProductDetail()" class="name">{{p.name}}</p>
+        <ion-grid class="ion-no-padding">
+          <ion-row class="ion-no-padding">
+            <ion-col size="12" class="ion-no-padding">
+              <span [innerHTML]="p.price_html" class="price"></span>
+            </ion-col>
+          </ion-row>
+          <ion-row class="ion-no-padding" *ngIf="type=='recent' || type=='wishList'">
+            <ion-button style="z-index: 10;" color="danger" (click)="removeProduct(type)">
+              {{'REMOVE'|translate}}</ion-button>
+          </ion-row>
+        </ion-grid>
+        <ion-row class="card-add-cart" *ngIf="isInCart()" (click)="showProductDetail()">
+          <ion-icon name="checkmark-circle"></ion-icon>
+        </ion-row>
+      </ion-card>
+
+      <!------------------------------------------- end of simple card styles------------------------------------------ -->
+    </div>
+
+
+    <!-- //====================================  list view for shop page ==================================== -->
+    <ion-item lines="none" *ngIf="type=='list'" class="list-product-design">
+      <ion-thumbnail slot="start">
+        <ion-img class="badge-img" src="assets/badge_new.png" *ngIf="checkProductNew()"></ion-img>
+        <img *ngIf="p.images.length!=0" src="{{p.images[0].src}}" (click)="showProductDetail()">
+        <img *ngIf="p.images.length==0" src="assets/woocommerce-placeholder.png" (click)="showProductDetail()">
+      </ion-thumbnail>
+      <ion-label>
+        <p (click)="showProductDetail()">{{p.name}}</p>
+        <p [innerHTML]="p.price_html"></p>
+        <ion-row>
+          <ion-col>
+            <ion-button color="secondary" id="config.cartButton==1 && p.stock_status=='instock' && p.type =='simple'"
+              (click)="addToCart(p)" item-start>{{'ADD TO CART'|translate}}</ion-button>
+            <ion-button color="secondary" (click)="showProductDetail()"
+              id="config.cartButton==1 && p.stock_status=='instock' && p.type!='simple'" item-start>
+              {{'DETAILS'|translate}}</ion-button>
+            <ion-button color="danger" id="config.cartButton==1 && p.stock_status!='instock'" item-start>
+              {{'OUT OF STOCK'|translate}}</ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-icon id="list-heart-icon" *ngIf="isLiked==0" (click)="clickWishList()" name="heart-outline"></ion-icon>
+        <ion-icon id="list-heart-icon" *ngIf="isLiked!=0" (click)="clickWishList()" name="heart"></ion-icon>
+      </ion-label>
+
+      <div class="img-div">
+        <div *ngIf="p.on_sale==true" class="sale">{{'SALE'|translate}}</div>
+        <div *ngIf="p.featured" class="featured">{{'Featured'|translate}}</div>
+      </div>
+      <ion-row class="card-add-cart" *ngIf="isInCart()" (click)="showProductDetail()">
+        <ion-icon name="checkmark-circle"></ion-icon>
+      </ion-row>
+    </ion-item>
+  </div>
+
+</div>

@@ -1,0 +1,32 @@
+.swiper-slide {
+  width: 40%;
+}
+
+ion-card {
+  margin-right: 0px;
+  margin-top: 10px !important;
+  height: auto;
+  border-radius: 0px;
+  ion-img {
+    filter: brightness(0.9);
+    background: #fff;
+  }
+  p {
+    padding-left: 10px;
+    padding-right: 10px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    color: black;
+  }
+}
+ion-card {
+  width: 100%;
+}
+ion-skeleton-text {
+  height: 80px;
+  margin: 0px;
+}

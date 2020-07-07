@@ -1,0 +1,232 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import "~@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap");
+//@import "~@expo-google-fonts";
+
+
+//@font-face {
+//  font-family: "Roboto";
+//  src: url("assets/fonts/Roboto/Roboto-Regular.ttf");
+//}
+@font-face {
+  font-family: "Cairo-Regular";
+  src: url("assets/fonts/Cairo/Cairo-Regular.woff");
+}
+:root,
+:root[mode="md"],
+:root[mode="ios"] {
+  --ion-font-family: "Cairo-Regular";
+  font-family: var(--ion-font-family) !important;
+}
+ion-header {
+  ion-toolbar {
+    --background: var(--ion-color-danger-tint);
+    --color: var(--ion-color-primary-contrast);
+    ion-title {
+      ion-img {
+        height: 25px;
+      }
+    }
+    ion-buttons {
+      ion-icon {
+        zoom: 1.3;
+      }
+      ion-button {
+        overflow: visible !important;
+        ion-badge {
+          background-color: var(--ion-color-primary-contrast);
+          color: var(--ion-color-danger-tint);
+          border: 1px solid var(--ion-color-primary-contrast);
+          // --padding-top:
+          position: absolute;
+          top: 0px;
+          right: -5px;
+          // border-radius: 100%;
+        }
+      }
+    }
+  }
+}
+
+ion-content {
+  --background: var(--ion-background-color);
+  ion-item {
+    --background: var(--ion-background-color);
+  }
+}
+.top-icon-header {
+  padding-top: 10px;
+  ion-button {
+    text-transform: capitalize;
+    --padding-start: 7px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 500;
+    ion-icon {
+      font-size: 12px;
+      margin-right: 3px;
+      margin-left: 3px;
+    }
+  }
+
+  #second {
+    --padding-end: 5px;
+    font-size: 10px;
+    color: var(--ion-color-danger);
+    text-transform: uppercase;
+    margin-left: auto;
+    ion-icon {
+      font-size: 10px;
+      margin: 0;
+    }
+  }
+}
+.swiper-slide {
+  text-align: left;
+}
+//=============================== rtl layout =========================
+[dir="rtl"] {
+  ion-header {
+    ion-toolbar {
+      ion-buttons {
+        ion-button {
+          ion-badge {
+            right: auto;
+            left: -5px;
+          }
+        }
+      }
+    }
+  }
+
+  .top-icon-header {
+    #second {
+      margin-right: auto;
+      margin-left: 0;
+    }
+  }
+}
+[dir="rtl"] {
+  .banner-slider.swiper-container,
+  .product-slides.swiper-container {
+    padding-right: 0px;
+  }
+  .swiper-container {
+    padding-right: 10px;
+  }
+  .swiper-slide {
+    text-align: right !important;
+  }
+  .product-component {
+    ion-item {
+      #list-heart-icon {
+        right: auto;
+        left: 10px;
+      }
+      .sale {
+        right: auto;
+        left: 0;
+      }
+      .featured {
+        right: auto;
+        left: 0;
+      }
+      ion-label {
+        margin-right: 10px;
+      }
+
+      ion-thumbnail {
+        .badge-img {
+          right: 9px;
+          left: auto;
+          top: 9px;
+          transform: rotate(90deg) scaleX(1);
+        }
+      }
+    }
+  }
+}
+app-product {
+  width: 100%;
+}
+
+.animate-item {
+  animation: fadeIn;
+}
+
+.ellipsis {
+  text-overflow: ellipsis;
+  /* Required for text-overflow to do anything */
+  white-space: nowrap;
+  overflow: hidden;
+}
+ion-toggle {
+  --background-checked: var(--ion-text-color);
+  --handle-background-checked: var(--ion-text-color);
+}
+ion-radio {
+  --color-checked: var(--ion-text-color);
+  --color: var(--ion-text-color);
+}
+.light-mode-plus-white-theme {
+  ion-tab-bar {
+    //--background: var(--ion-background-color);
+    ion-tab-button {
+      // --color: #aaa;
+      --color-selected: var(--ion-color-danger-tint);
+    }
+  }
+}
+.dark-mode-plus-white-theme {
+  ion-tab-bar {
+    //--background: var(--ion-background-color);
+    ion-tab-button {
+      // --color: #aaa;
+      --color-selected: var(--ion-color-danger-tint);
+    }
+  }
+}
+
+.light-mode-plus-black-theme {
+  ion-tab-bar {
+    //--background: var(--ion-background-color);
+    ion-tab-button {
+      // --color: #aaa;
+      --color-selected: var(--ion-color-danger-tint);
+    }
+  }
+}
+
+.dark-mode-plus-black-theme {
+  ion-tab-bar {
+    //--background: var(--ion-background-color);
+    ion-tab-button {
+      // --color: #aaa;
+      --color-selected: var(--ion-color-danger-tint);
+    }
+  }
+}

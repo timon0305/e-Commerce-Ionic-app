@@ -1,0 +1,45 @@
+// For image design
+ion-img {
+  height: 150px;
+  opacity: 0.1;
+}
+
+// For Form
+form {
+  padding-top: 28px;
+  ion-item {
+    --padding-start: 0;
+    --background: var(--ion-background-color);
+    ion-label {
+      color: rgba(var(--ion-text-color-rgb), 0.5);
+    }
+    &:nth-child(3) {
+      height: 33px;
+      ion-label {
+        color: #c86969;
+      }
+    }
+  }
+  ion-button {
+    text-transform: uppercase;
+  }
+}
+
+// For Login, Facebook, Register Buttons
+ion-button {
+  &:nth-child(3) {
+    text-transform: capitalize;
+    margin-top: 15px;
+  }
+  &:nth-child(4) {
+    margin-top: 15px;
+    --background:  #f25454;
+    color: white;
+  }
+  &:nth-child(5) {
+    color: black;
+    margin-top: 20px;
+    --border-color: white;
+    --border-width: thin;
+  }
+}

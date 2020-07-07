@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+    <ion-menu-button slot="start" *ngIf="!config.appNavigationTabs">
+      <ion-icon name="menu"></ion-icon>
+    </ion-menu-button>
+    <ion-title>
+      {{'Contact Us'| translate }}
+    </ion-title>
+    <ion-buttons slot="end" *ngIf="!config.appNavigationTabs">
+      <ion-button fill="clear" routerLink="/search" routerDirection="forward">
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" routerLink="/cart" routerDirection="forward">
+        <ion-icon name="basket"></ion-icon>
+        <ion-badge color="secondary">{{shared.cartTotalItems()}}</ion-badge>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div #map id="map"></div>
+  <ion-card class="ion-no-padding">
+    <ion-card-content class="ion-no-padding">
+      <ion-item lines="none">
+        <ion-avatar slot="start">
+          <ion-icon name="pin"></ion-icon>
+        </ion-avatar>
+        <ion-label>
+          <p wrap-text>
+            {{config.address}}
+          </p>
+        </ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-avatar slot="start">
+          <ion-icon name="mail"></ion-icon>
+        </ion-avatar>
+        <ion-label>
+          <p>
+            {{config.email}}
+          </p>
+        </ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-avatar slot="start">
+          <ion-icon name="call"></ion-icon>
+        </ion-avatar>
+
+        <ion-label>
+          <p>
+            {{config.phoneNo}}
+          </p>
+        </ion-label>
+      </ion-item>
+
+      <form #contactForm="ngForm" (ngSubmit)="submit()">
+        <ion-item>
+          <ion-input type="text" placeholder="{{'Name'|translate}}" name="name" [(ngModel)]="contact.name" required>
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input type="email" placeholder="{{'Email'|translate}}" name="email" [(ngModel)]="contact.email" required>
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input type="text" placeholder="{{'Your Messsage'|translate}}" name="message"
+            [(ngModel)]="contact.message" required></ion-input>
+        </ion-item>
+        <ion-col col-12>
+          <label *ngIf="errorMessage!=''">
+            <span>{{errorMessage}}</span>
+          </label>
+        </ion-col>
+        <ion-item lines="none">
+          <ion-button expand="full" type="submit" [disabled]="!contactForm.form.valid">{{'Send'|translate}}</ion-button>
+        </ion-item>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

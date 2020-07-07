@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-menu-button slot="start" *ngIf="!config.appNavigationTabs">
+      <ion-icon name="menu"></ion-icon>
+    </ion-menu-button>
+    <ion-buttons slot="start">
+      <ion-back-button icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      {{'Edit Profile'| translate }}
+    </ion-title>
+    <ion-buttons slot="end" *ngIf="!config.appNavigationTabs">
+      <ion-button fill="clear" routerLink="/search" routerDirection="forward">
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" routerLink="/cart" routerDirection="forward">
+        <ion-icon name="basket"></ion-icon>
+        <ion-badge color="secondary">{{shared.cartTotalItems()}}</ion-badge>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #userForm="ngForm" (ngSubmit)="updateInfo()">
+    <ion-item>
+      <ion-label position="floating">{{'First Name'|translate}}</ion-label>
+      <ion-input type="text" [(ngModel)]="myAccountData.first_name" name="customers_firstname" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">{{'Last Name'|translate}}</ion-label>
+      <ion-input type="text" [(ngModel)]="myAccountData.last_name" name="customers_lastname" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">{{'New Password'|translate}}</ion-label>
+      <ion-input type="password" [(ngModel)]="password" name="password"></ion-input>
+    </ion-item>
+    <ion-button expand="full" type="submit" [disabled]="!userForm.form.valid">{{'Update'|translate}}
+    </ion-button>
+  </form>
+</ion-content>

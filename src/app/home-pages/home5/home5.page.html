@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-menu-button slot="start" *ngIf="!config.appNavigationTabs">
+      <ion-icon name="menu"></ion-icon>
+    </ion-menu-button>
+    <ion-title>
+      <ion-img src="assets/logo_header.png" alt="logo"></ion-img>
+    </ion-title>
+    <ion-buttons slot="end" *ngIf="!config.appNavigationTabs">
+      <ion-button fill="clear" routerLink="/search" routerDirection="forward">
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" routerLink="/cart" routerDirection="forward">
+        <ion-icon name="basket"></ion-icon>
+        <ion-badge color="secondary">{{shared.cartTotalItems()}}</ion-badge>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-card *ngFor="let c of shared.categories" (click)="openSubCategories(c)" class="animate-item">
+      <img *ngIf="c.image" src="{{c.image.src}}">
+      <div>
+        <h2>{{c.name }}</h2>
+        <p>{{c.count}} {{'Products'| translate }}</p>
+      </div>
+    </ion-card>
+  </ion-list>
+</ion-content>

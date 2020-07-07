@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button fill="clear" (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="ion-no-padding">{{'Create an Account'|translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-avatar>
+    <ion-img src="assets/avatar.png"></ion-img>
+  </ion-avatar>
+
+  <form #loginForm="ngForm" class="form" (ngSubmit)="createAccount()">
+
+    <ion-item>
+      <ion-label position="floating">{{'First Name'|translate}}</ion-label>
+      <ion-input type="text" name="customers_firstname" [(ngModel)]="formData.first_name" required>
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">{{'Last Name'|translate}}</ion-label>
+      <ion-input type="text" name="customers_lastname" [(ngModel)]="formData.last_name" required>
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">{{'Username'|translate}}</ion-label>
+      <ion-input type="text" name="username" [(ngModel)]="formData.username" required>
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">{{'Email'|translate}}</ion-label>
+      <ion-input type="email" email name="email" [(ngModel)]="formData.email" required>
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">{{'Password'|translate}}</ion-label>
+      <ion-input type="password" name="c_d" [(ngModel)]="formData.password" required>
+      </ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="errorMessage!=''" lines="none">
+      <ion-label>
+        {{errorMessage| translate}}
+      </ion-label>
+    </ion-item>
+
+    <p>{{"Creating an account means you’re okay with our"|translate}}
+      <a (click)="openTermServicesPage()">{{'Term and Services'|translate}}</a>,
+      <a (click)="openPrivacyPolicyPage()">{{'Privacy Policy'|translate}}</a> {{'and'|translate}}
+      <a (click)="openRefundPolicyPage()">{{'Refund Policy'|translate}}</a>
+    </p>
+
+    <ion-button disabled="true" expand="full" color="secondary" type="submit" [disabled]="!loginForm.form.valid">
+      {{'Register'|translate}}
+    </ion-button>
+  </form>
+</ion-content>
