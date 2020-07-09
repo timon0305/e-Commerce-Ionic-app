@@ -49,9 +49,7 @@ export class ConfigService {
   public onesignalAppId = "";
   public onesignalSenderId = "";
 
-  public googleMapId = "";
-
-
+  public googleMapId = "AIzaSyD8OJWvqCanCoFm8ZQM8YFOaxIlAHwUIcQ";
 
   public admob = 0; // show/hide ads on android value 1 for show, 0 for hide
   public admobBannerid = '';
@@ -61,6 +59,7 @@ export class ConfigService {
   public admobIntidIos = '';
 
   public languageCode = localStorage.languageCode;//default language of app
+  public currencyCode = localStorage.currencyCode;
   public languageDirection = localStorage.languageDirection;//default direction of app
   public appDirection: any = this.languageDirection;// application direction
   public currency = localStorage.currency;

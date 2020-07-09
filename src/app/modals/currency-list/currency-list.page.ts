@@ -30,7 +30,6 @@ export class CurrencyListPage implements OnInit {
       this.loading.hide();
       this.currencyList = data.data;
       this.currencyList.forEach(val => {
-
         if (val.symbol == localStorage.currency) {
           console.log(val.symbol);
           this.currency = val;

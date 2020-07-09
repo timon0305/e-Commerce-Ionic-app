@@ -5,7 +5,10 @@ import * as $ from "jquery";
 })
 export class CurencyPipe implements PipeTransform {
 
-  currency = $('<textarea />').html(localStorage.currency).text();
+  // currency = $('<textarea />').html(localStorage.currency).text();
+  // currency = $('<textarea />').html("ر.س").text();
+  currency ="ر.س  ";
+  // currency ="SAR ";
 
   position = localStorage.currencyPos;
   decimal = localStorage.decimals;

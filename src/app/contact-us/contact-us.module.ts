@@ -23,6 +23,6 @@ const routes: Routes = [
     PipesModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [ContactUsPage]
+  declarations: [ContactUsPage],
 })
 export class ContactUsPageModule {}

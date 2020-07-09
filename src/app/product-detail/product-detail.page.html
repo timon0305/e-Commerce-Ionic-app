@@ -69,6 +69,14 @@
     </ion-row>
   </ion-grid>
 
+  <ion-grid class="product-short-description">
+    <ion-row>
+      <ion-col class="product-title" size="12">
+        <div class="short-description" [innerHTML]="short_description"></div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
   <ion-grid class="product-detail-header" *ngIf="product.type!='grouped'">
     <ion-row>
       <ion-col class="left" size="6">

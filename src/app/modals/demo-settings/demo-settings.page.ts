@@ -116,7 +116,7 @@ export class DemoSettingsPage implements OnInit {
   currentLanguageCode = localStorage.languageCode;
   languageList = [
     { "name": "English", "code": "en", "image": "assets/flags/english.jpg", "direction": "ltr" },
-    { "name": "Arabic", "code": "ar", "image": "assets/flags/uae.jpg", "direction": "rtl" }]
+    { "name": "Saudi Arabia", "code": "ar", "image": "assets/flags/sau.jpg", "direction": "rtl" }]
 
   settingDefaultLanguage() {
     this.languageList.forEach(val => {

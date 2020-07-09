@@ -445,26 +445,26 @@ export class AppComponent {
     this.menuCtrl.toggle();
   }
 
-  getStatusBarColor() {
-    let headerColor = $('#primary').css('color');
-    let rgb2 = headerColor;
-    rgb2 = headerColor.replace(/\s/g, '').match(/^rgba?\((\d+),(\d+),(\d+)/i);
-    this.shared.headerHexColor = (rgb2 && rgb2.length === 4) ? "#" +
-      ("0" + parseInt(rgb2[1], 10).toString(16)).slice(-2) +
-      ("0" + parseInt(rgb2[2], 10).toString(16)).slice(-2) +
-      ("0" + parseInt(rgb2[3], 10).toString(16)).slice(-2) : headerColor;
-    console.log(this.shared.headerHexColor);
-
-    let color = $('#my').css('color');
-    let rgb = color;
-    rgb = color.replace(/\s/g, '').match(/^rgba?\((\d+),(\d+),(\d+)/i);
-    let ret = (rgb && rgb.length === 4) ? "#" +
-      ("0" + parseInt(rgb[1], 10).toString(16)).slice(-2) +
-      ("0" + parseInt(rgb[2], 10).toString(16)).slice(-2) +
-      ("0" + parseInt(rgb[3], 10).toString(16)).slice(-2) : color;
-    console.log(ret);
-    this.statusBar.backgroundColorByHexString(ret);
-  }
+  // getStatusBarColor() {
+  //   let headerColor = $('#primary').css('color');
+  //   let rgb2 = headerColor;
+  //   rgb2 = headerColor.replace(/\s/g, '').match(/^rgba?\((\d+),(\d+),(\d+)/i);
+  //   this.shared.headerHexColor = (rgb2 && rgb2.length === 4) ? "#" +
+  //     ("0" + parseInt(rgb2[1], 10).toString(16)).slice(-2) +
+  //     ("0" + parseInt(rgb2[2], 10).toString(16)).slice(-2) +
+  //     ("0" + parseInt(rgb2[3], 10).toString(16)).slice(-2) : headerColor;
+  //   console.log(this.shared.headerHexColor);
+  //
+  //   let color = $('#my').css('color');
+  //   let rgb = color;
+  //   rgb = color.replace(/\s/g, '').match(/^rgba?\((\d+),(\d+),(\d+)/i);
+  //   let ret = (rgb && rgb.length === 4) ? "#" +
+  //     ("0" + parseInt(rgb[1], 10).toString(16)).slice(-2) +
+  //     ("0" + parseInt(rgb[2], 10).toString(16)).slice(-2) +
+  //     ("0" + parseInt(rgb[3], 10).toString(16)).slice(-2) : color;
+  //   console.log(ret);
+  //   this.statusBar.backgroundColorByHexString(ret);
+  // }
   public link = "empty";
   public linkArgs: any;
   public deepUrl = "";

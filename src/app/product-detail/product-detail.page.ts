@@ -29,6 +29,7 @@ export class ProductDetailPage implements OnInit {
   quantity = 1;
   discount_price;
   product_price;
+  short_description: string;
   releatedItems = []; // <!-- 2.0 updates -->
   reviews = [];// <!-- 2.0 updates -->
   ratingStarsValue = null;// <!-- 2.0 updates -->
@@ -48,10 +49,10 @@ export class ProductDetailPage implements OnInit {
   sliderConfigReleatedItems = {
     slidesPerView: this.config.productSlidesPerPage,
     spaceBetween: 0
-  }
+  };
   sliderConfig = {
     zoom: true
-  }
+  };
 
   public setDefaultFirstTime = true;
 
@@ -74,6 +75,7 @@ export class ProductDetailPage implements OnInit {
     //this.removeDiacritics("KOLOR");
     this.pId = this.activatedRoute.snapshot.paramMap.get('id');
     this.product = JSON.parse(JSON.stringify(this.getProductData(this.pId)));
+
     this.attributes = JSON.parse(JSON.stringify(this.product.attributes));
 
 
@@ -121,7 +123,7 @@ export class ProductDetailPage implements OnInit {
     return p;
   }
   ngOnInit() {
-
+      this.short_description = this.product['short_description']['changingThisBreaksApplicationSecurity'];
   }
   //=================================================================================================================================================================================
   getGroupProducts() {
@@ -191,7 +193,6 @@ export class ProductDetailPage implements OnInit {
     }
     this.allVariableAttributes.push(ob);
     if (this.allVariableAttributes.length == this.product.variations.length) this.sortAllVariationAttributes();
-    console.log(this.allVariableAttributes);
   }
 
   checkDefaultAttribute(value) {
@@ -265,7 +266,6 @@ export class ProductDetailPage implements OnInit {
       count++;
     }
     //console.log("attributes after select");
-    console.log(this.tempAllVariableAttributes);
   }
 
 
@@ -383,7 +383,7 @@ export class ProductDetailPage implements OnInit {
 
   //===============================================================================================================================
   selectVariation() {
-    console.log(this.tempAllVariableAttributes);
+    console.log('this selected', this.tempAllVariableAttributes);
     let pId = null;
     for (let i of this.tempAllVariableAttributes) {
       if (i.select == true) { pId = i.id; break; }
