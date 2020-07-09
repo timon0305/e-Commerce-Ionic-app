@@ -383,7 +383,6 @@ export class ProductDetailPage implements OnInit {
 
   //===============================================================================================================================
   selectVariation() {
-    console.log('this selected', this.tempAllVariableAttributes);
     let pId = null;
     for (let i of this.tempAllVariableAttributes) {
       if (i.select == true) { pId = i.id; break; }
@@ -393,6 +392,7 @@ export class ProductDetailPage implements OnInit {
     }
     if (this.selectAttributes != null)
       this.updateProductDetail(this.selectedVariation);
+    console.log(this.selectedVariation)
   }
   //===============================================================================================================================
   updateProductDetail(p) {

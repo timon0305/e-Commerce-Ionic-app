@@ -124,7 +124,6 @@
     </ion-row>
   </ion-grid>
 
-
   <ion-grid class="product-detail-content" *ngIf="product.sku!=null && product.sku!=''">
     <ion-row>
       <ion-col size="12">
@@ -266,6 +265,14 @@
       </ion-col>
     </ion-row>
 
+  </ion-grid>
+
+  <ion-grid class="variation-product-short-description">
+    <ion-row>
+      <ion-col size="12">
+        <div *ngIf="selectedVariation" [innerHTML]="selectedVariation.description"></div>
+      </ion-col>
+    </ion-row>
   </ion-grid>
 
   <ion-grid class="product-detail-content ion-no-padding" *ngIf="product.description!=''">
