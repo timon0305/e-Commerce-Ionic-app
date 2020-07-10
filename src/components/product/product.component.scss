@@ -1021,9 +1021,11 @@
   --ion-color-shade: var(--ion-color-secondary-shade, #36abe0) !important;
   --ion-color-tint: var(--ion-color-secondary-tint, #50c8ff) !important;
 }
-ion-segment-button {
-  letter-spacing: -2px;
-}
-ion-button {
-  letter-spacing: -2px;
+[dir="rtl"] {
+  ion-segment-button {
+    letter-spacing: -2px;
+  }
+  ion-button {
+    letter-spacing: -2px;
+  }
 }

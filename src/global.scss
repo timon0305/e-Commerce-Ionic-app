@@ -141,6 +141,12 @@ ion-content {
   .swiper-slide {
     text-align: right !important;
   }
+  ion-slide {
+    letter-spacing: -1px;
+  }
+  ion-text {
+    letter-spacing: -1px;
+  }
   .product-component {
     ion-item {
       #list-heart-icon {

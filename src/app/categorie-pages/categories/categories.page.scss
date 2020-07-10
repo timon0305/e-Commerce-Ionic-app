@@ -35,3 +35,11 @@ ion-content {
     }
   }
 }
+[dir="rtl"] {
+  ion-text h6 {
+    letter-spacing: -1px!important;
+  }
+  ion-text p {
+    letter-spacing: -1px!important;
+  }
+}
