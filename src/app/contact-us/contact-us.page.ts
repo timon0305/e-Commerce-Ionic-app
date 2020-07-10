@@ -79,13 +79,12 @@ export class ContactUsPage implements OnInit {
         let coords = new google.maps.LatLng(24.746441, 46.64289);
         this.map = new google.maps.Map(this.mapElement.nativeElement, {
             center: {lat: 24.746441, lng: 46.64289},
-            zoom: 8
+            zoom: 18
         });
         const myApiKey = this.config.googleMapId;
         const lat = parseFloat(this.config.latitude);
         const lng = parseFloat(this.config.longitude);
         let content = this.config.address;
-        console.log(this.config)
         const parentElement = this.mapElement.nativeElement;
         const script = document.createElement('script');
 

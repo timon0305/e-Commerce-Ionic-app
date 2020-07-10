@@ -63,7 +63,7 @@ ion-header {
           border: 1px solid var(--ion-color-primary-contrast);
           // --padding-top:
           position: absolute;
-          top: 0px;
+          top: 0;
           right: -5px;
           // border-radius: 100%;
         }
@@ -133,7 +133,7 @@ ion-content {
 [dir="rtl"] {
   .banner-slider.swiper-container,
   .product-slides.swiper-container {
-    padding-right: 0px;
+    padding-right: 0;
   }
   .swiper-container {
     padding-right: 10px;
@@ -142,6 +142,9 @@ ion-content {
     text-align: right !important;
   }
   ion-slide {
+    letter-spacing: -1px;
+  }
+  ion-button {
     letter-spacing: -1px;
   }
   ion-text {

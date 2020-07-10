@@ -82,12 +82,7 @@
       </ion-label>
       <ion-icon slot="end" name="lock-closed"></ion-icon>
     </ion-item>
-    <ion-item lines="full" (click)="openPage('addresses')" *ngIf="showOption('address')">
-      <ion-label>
-        <p>{{"Address"|translate}}</p>
-      </ion-label>
-      <ion-icon slot="end" name="locate"></ion-icon>
-    </ion-item>
+
     <ion-item lines="full" (click)="openPage('my-orders')" *ngIf="showOption('myOrdersPage')">
       <ion-label>
         <p>{{"My Orders"|translate}}</p>
@@ -108,12 +103,6 @@
       <ion-icon slot="end" name="happy"></ion-icon>
     </ion-item>
 
-    <ion-item lines="full" (click)="openPage('notifications')" *ngIf="showOption('scratchCardPage')">
-      <ion-label>
-        <p>{{"Scratch Cards"|translate}}</p>
-      </ion-label>
-      <ion-icon slot="end" name="notifications"></ion-icon>
-    </ion-item>
 
     <ion-item lines="full" (click)="openPage('contact-us')" *ngIf="showOption('contactPage')">
       <ion-label>

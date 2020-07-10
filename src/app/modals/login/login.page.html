@@ -10,7 +10,7 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <ion-img src="assets/icons_stripe.svg"></ion-img>
+  <ion-img src="assets/tlz-app-icon.jpg"></ion-img>
 
   <form #loginForm="ngForm" class="form" (ngSubmit)="login()">
     <ion-item>
@@ -38,8 +38,8 @@
 
   </form>
 
-  <ion-button expand="full" fill="clear" color="dark" (click)="openForgetPasswordPage()">{{ "I've forgotten my
-      password?" | translate }}</ion-button>
+  <ion-button expand="full" fill="clear" color="dark" (click)="openForgetPasswordPage()">
+    {{ "I've forgotten my password?" | translate }}</ion-button>
 
   <ion-button *ngIf="config.fbButton==1" expand="full" (click)="facebookLogin()">{{ 'Login with' | translate }}
     <ion-icon name="logo-facebook"></ion-icon>
@@ -47,8 +47,8 @@
 
   <ion-button expand="block" fill="outline" (click)="openSignUpPage()">{{ 'Register' | translate }}</ion-button>
 
-  <ion-button expand="block" *ngIf="config.guestCheckOut && hideGuestLogin" [disabled]="shared.cartProducts.length==0"
-    (click)="guestLogin()">
-    {{'Continue as a Guest'|translate}}</ion-button>
+  <!--<ion-button expand="block" *ngIf="config.guestCheckOut && hideGuestLogin" [disabled]="shared.cartProducts.length==0"-->
+    <!--(click)="guestLogin()">-->
+    <!--{{'Continue as a Guest'|translate}}</ion-button>-->
 
 </ion-content>

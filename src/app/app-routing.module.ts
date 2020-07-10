@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'cart', loadChildren: './cart/cart.module#CartPageModule' },
   { path: 'contact-us', loadChildren: './contact-us/contact-us.module#ContactUsPageModule' },
   { path: 'downloads', loadChildren: './downloads/downloads.module#DownloadsPageModule' },
-  { path: 'intro', loadChildren: './intro/intro.module#IntroPageModule' },
+  // { path: 'intro', loadChildren: './intro/intro.module#IntroPageModule' },
   { path: 'my-account', loadChildren: './my-account/my-account.module#MyAccountPageModule' },
   { path: 'my-orders', loadChildren: './my-orders/my-orders.module#MyOrdersPageModule' },
   { path: 'news', loadChildren: './news/news.module#NewsPageModule' },
