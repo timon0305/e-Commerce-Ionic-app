@@ -76,18 +76,32 @@ export class ContactUsPage implements OnInit {
         // google.maps.event.addListener(marker, 'click', () => {
         //     infoWindow.open(map, marker);
         // });
+        let coords = new google.maps.LatLng(24.746441, 46.64289);
         this.map = new google.maps.Map(this.mapElement.nativeElement, {
-            center: {lat: 24.774265, lng: 46.738586},
+            center: {lat: 24.746441, lng: 46.64289},
             zoom: 8
         });
         const myApiKey = this.config.googleMapId;
         const lat = parseFloat(this.config.latitude);
         const lng = parseFloat(this.config.longitude);
         let content = this.config.address;
+        console.log(this.config)
         const parentElement = this.mapElement.nativeElement;
         const script = document.createElement('script');
 
-        console.log(this.config)
+        let marker : google.maps.Marker = new google.maps.Marker({
+            map: this.map,
+            animation: google.maps.Animation.DROP,
+            position: coords
+        });
+
+        let infoWindow = new google.maps.InfoWindow({
+            content: content
+        });
+        google.maps.event.addListener(marker, 'click', () => {
+            infoWindow.open(this.map, marker);
+        });
+
         try {
           // script.src = "https://maps.googleapis.com/maps/api/js?key=" + myApiKey;
           script.async = true;

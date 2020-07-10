@@ -18,7 +18,7 @@
 </ion-header>
 
 <ion-content>
-  <form #loginForm="ngForm" (ngSubmit)="getSearchData()">
+  <form class="form-search" #loginForm="ngForm" (ngSubmit)="getSearchData()">
     <ion-searchbar [(ngModel)]="search" name="search" placeholder="{{'Search'|translate}}"
       (ionInput)="onChangeKeyword($event)">
     </ion-searchbar>

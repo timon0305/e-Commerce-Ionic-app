@@ -208,7 +208,7 @@
             <ion-card-subtitle>{{att.name}}</ion-card-subtitle>
           </ion-card-header>
           <ion-card-content>
-            <span *ngFor=" let val of att.options; let i = index">
+            <span *ngFor=" let val of att.options; let i = index" style="margin-bottom: 5px; padding-bottom: 5px">
               <span [class.disabled]="!availableOption(att.name,val)" style="padding-right: 5px;">
                 <ion-badge class="product-badge" mode="md" [color]="checkOptionSelected(val,att.name,ind)"
                   (click)="fillAttributes(val,att.name,ind)">

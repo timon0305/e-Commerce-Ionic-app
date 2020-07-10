@@ -7,7 +7,7 @@ const routes: Routes = [
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
 
-  { path: 'intro', loadChildren: './intro/intro.module#IntroPageModule' },
+  // { path: 'intro', loadChildren: './intro/intro.module#IntroPageModule' },
   { path: 'about-us', loadChildren: './about-us/about-us.module#AboutUsPageModule' },
   { path: 'add-review/:id', loadChildren: './add-review/add-review.module#AddReviewPageModule' },
   { path: 'cart', loadChildren: './cart/cart.module#CartPageModule' },
