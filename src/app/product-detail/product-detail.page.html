@@ -205,7 +205,7 @@
       <div *ngFor=" let att of attributes; let ind = index">
         <ion-card *ngIf="att.variation" class="att-variation-card">
           <ion-card-header>
-            <ion-card-subtitle>{{att.name}}</ion-card-subtitle>
+            <ion-card-subtitle >{{att.name}}</ion-card-subtitle>
           </ion-card-header>
           <ion-card-content>
             <span *ngFor=" let val of att.options; let i = index" style="display: inline-block; margin: 5px 0;">

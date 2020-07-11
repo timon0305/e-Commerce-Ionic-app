@@ -518,3 +518,10 @@
   font-size: 14px;
   margin: 0;
 }
+
+[dir="rtl"] {
+  .att-variation-card ion-card-subtitle {
+    padding-right: 5px!important;
+    letter-spacing: 0 !important;
+  }
+}

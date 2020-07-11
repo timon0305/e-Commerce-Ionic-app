@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import { ModalController, Platform, NavController } from '@ionic/angular';
 import { ConfigService } from 'src/providers/config/config.service';
 import { LoadingService } from 'src/providers/loading/loading.service';
@@ -22,6 +22,7 @@ import { AppEventsService } from 'src/providers/app-events/app-events.service';
   selector: 'app-settings',
   templateUrl: './settings.page.html',
   styleUrls: ['./settings.page.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class SettingsPage implements OnInit {
 

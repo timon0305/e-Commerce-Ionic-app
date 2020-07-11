@@ -50,7 +50,7 @@
   </ion-grid>
   <ion-list class="ion-padding">
     <ion-item lines="none">
-      <ion-label>
+      <ion-label class="app-setting-label">
         <p>{{"Turn on/off Notifications"|translate}}</p>
       </ion-label>
       <ion-toggle [(ngModel)]="setting.notification" (ionChange)="onOffPushNotification(setting.notification)">
@@ -59,45 +59,45 @@
   </ion-list>
   <ion-list class="ion-padding">
     <ion-item lines="full" (click)="openLanguagePage()" *ngIf="config.multiLanguage">
-      <ion-label>
+      <ion-label class="app-setting-label">
         <p>{{"Select Language"|translate}}</p>
       </ion-label>
       <ion-icon slot="end" name="globe"></ion-icon>
     </ion-item>
     <ion-item lines="full" (click)="openCurrencyPage()" *ngIf="config.multiCurrency">
-      <ion-label>
+      <ion-label class="app-setting-label">
         <p>{{"Select Currency"|translate}}</p>
       </ion-label>
       <ion-icon slot="end" name="logo-usd"></ion-icon>
     </ion-item>
     <ion-item lines="full" (click)="openPage('wish-list')" *ngIf="showOption('wishListPage')">
-      <ion-label>
+      <ion-label class="app-setting-label">
         <p>{{"My Wish List"|translate}}</p>
       </ion-label>
       <ion-icon slot="end" name="heart"></ion-icon>
     </ion-item>
     <ion-item lines="full" (click)="openPage('my-account')" *ngIf="showOption('editPage')">
-      <ion-label>
+      <ion-label class="app-setting-label">
         <p>{{"Edit Profile"|translate}}</p>
       </ion-label>
       <ion-icon slot="end" name="lock-closed"></ion-icon>
     </ion-item>
 
     <ion-item lines="full" (click)="openPage('my-orders')" *ngIf="showOption('myOrdersPage')">
-      <ion-label>
+      <ion-label class="app-setting-label">
         <p>{{"My Orders"|translate}}</p>
       </ion-label>
       <ion-icon slot="end" name="cart"></ion-icon>
     </ion-item>
     <ion-item lines="full" (click)="openPage('downloads')" *ngIf="showOption('downloadPage')">
-      <ion-label>
+      <ion-label class="app-setting-label">
         <p>{{"Downloads"|translate}}</p>
       </ion-label>
       <ion-icon slot="end" name="download"></ion-icon>
     </ion-item>
 
     <ion-item lines="full" (click)="openPage('reward-points')" *ngIf="showOption('rewardPointsPage')">
-      <ion-label>
+      <ion-label class="app-setting-label">
         <p>{{"Reward Points"|translate}}</p>
       </ion-label>
       <ion-icon slot="end" name="happy"></ion-icon>
@@ -105,25 +105,25 @@
 
 
     <ion-item lines="full" (click)="openPage('contact-us')" *ngIf="showOption('contactPage')">
-      <ion-label>
+      <ion-label class="app-setting-label">
         <p>{{"Contact Us"|translate}}</p>
       </ion-label>
       <ion-icon slot="end" name="call"></ion-icon>
     </ion-item>
     <ion-item lines="full" (click)="openPage('about-us')" *ngIf="showOption('aboutUsPage')">
-      <ion-label>
+      <ion-label class="app-setting-label">
         <p>{{"About Us"|translate}}</p>
       </ion-label>
       <ion-icon slot="end" name="information-circle"></ion-icon>
     </ion-item>
     <ion-item lines="full" (click)="openPage('news')" *ngIf="showOption('newsPage')">
-      <ion-label>
+      <ion-label class="app-setting-label">
         <p>{{"News"|translate}}</p>
       </ion-label>
       <ion-icon slot="end" name="newspaper"></ion-icon>
     </ion-item>
     <ion-item lines="full" (click)="openPage('intro')" *ngIf="showOption('introPage')">
-      <ion-label>
+      <ion-label class="app-setting-label">
         <p>{{"Intro"|translate}}</p>
       </ion-label>
       <ion-icon slot="end" name="caret-forward"></ion-icon>

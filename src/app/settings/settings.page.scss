@@ -81,3 +81,8 @@
 .row-img {
   opacity: 0.1 !important;
 }
+[dir="rtl"] {
+  ion-list ion-item .app-setting-label>p {
+    margin-right: 5px!important;
+  }
+}
