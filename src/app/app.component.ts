@@ -245,7 +245,7 @@ export class AppComponent {
         this.config.checkingNewSettingsFromServer();
       }
       else {
-        this.navCtrl.navigateRoot("intro");
+        this.navCtrl.navigateRoot("");
       }
       this.storage.set('firsttimeApp', 'firstTime');
       setTimeout(() => {

@@ -265,9 +265,9 @@ const routes: Routes = [
           {
             path: 'my-order-detail', loadChildren: () => import('../my-order-detail/my-order-detail.module').then(m => m.MyOrderDetailPageModule)
           },
-          {
-            path: 'intro', loadChildren: () => import('../intro/intro.module').then(m => m.IntroPageModule)
-          },
+          // {
+          //   path: 'intro', loadChildren: () => import('../intro/intro.module').then(m => m.IntroPageModule)
+          // },
           {
             path: 'contact-us', loadChildren: () => import('../contact-us/contact-us.module').then(m => m.ContactUsPageModule)
           },
