@@ -11,3 +11,8 @@ img {
   top: 12%;
   left: 55%;
 }
+[dir='rtl'] {
+  ion-label {
+    letter-spacing: -1px!important;
+  }
+}
