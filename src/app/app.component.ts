@@ -99,7 +99,7 @@ export class AppComponent {
     { name: 'Contact Us', icon: 'call', img: 'assets/left-menu-icon/phone.png', url: '/contact-us', value: 'contactPage' },
     { name: 'About Us', icon: 'information-circle', img: 'assets/left-menu-icon/about.png', url: '/about-us', value: 'aboutUsPage' },
     { name: 'News', icon: 'newspaper', img: 'assets/left-menu-icon/news.png', url: '/news', value: 'newsPage' },
-    { name: 'Intro', icon: 'caret-forward', img: 'assets/left-menu-icon/intro.png', url: '/intro', value: 'introPage' },
+    // { name: 'Intro', icon: 'caret-forward', img: 'assets/left-menu-icon/intro.png', url: '/intro', value: 'introPage' },
     { name: 'Share', icon: 'share', img: 'assets/left-menu-icon/share.png', url: 'share', value: 'sharePage' },
     { name: 'Rate Us', icon: 'star-half', img: 'assets/left-menu-icon/rating.png', url: 'rateUs', value: 'ratePage' },
     { name: 'Settings', icon: 'settings', img: 'assets/left-menu-icon/setting.png', url: '/settings', value: 'settingsPage' }
@@ -115,7 +115,7 @@ export class AppComponent {
     { name: 'Contact Us', icon: 'call', img: 'assets/left-menu-icon/phone.png', url: '/contact-us', value: 'contactPage' },
     { name: 'About Us', icon: 'information-circle', img: 'assets/left-menu-icon/about.png', url: '/about-us', value: 'aboutUsPage' },
     { name: 'News', icon: 'newspaper', img: 'assets/left-menu-icon/news.png', url: '/news', value: 'newsPage' },
-    { name: 'Intro', icon: 'caret-forward', img: 'assets/left-menu-icon/intro.png', url: '/intro', value: 'introPage' },
+    // { name: 'Intro', icon: 'caret-forward', img: 'assets/left-menu-icon/intro.png', url: '/intro', value: 'introPage' },
     { name: 'Share', icon: 'share', img: 'assets/left-menu-icon/share.png', url: 'share', value: 'sharePage' },
     { name: 'Rate Us', icon: 'star-half', img: 'assets/left-menu-icon/rating.png', url: 'rateUs', value: 'ratePage' },
     { name: 'Settings', icon: 'settings', img: 'assets/left-menu-icon/setting.png', url: '/settings', value: 'settingsPage' }
@@ -245,7 +245,7 @@ export class AppComponent {
         this.config.checkingNewSettingsFromServer();
       }
       else {
-        this.navCtrl.navigateRoot("");
+        this.navCtrl.navigateRoot("/");
       }
       this.storage.set('firsttimeApp', 'firstTime');
       setTimeout(() => {

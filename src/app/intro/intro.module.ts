@@ -10,7 +10,7 @@ import { PipesModule } from 'src/pipes/pipes.module';
 
 const routes: Routes = [
   {
-    path: '',
+    path: '/*/intro',
     component: IntroPage
   }
 ];
