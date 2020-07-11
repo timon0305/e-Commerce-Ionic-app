@@ -141,21 +141,26 @@ ion-content {
   .swiper-slide {
     text-align: right !important;
   }
-  ion-slide {
-    letter-spacing: -1px;
-  }
-  ion-label {
-    letter-spacing: -1px!important;
-  }
-  ion-card {
-    letter-spacing: -1px!important;
-  }
-  ion-button {
-    letter-spacing: -1px;
-  }
-  ion-text {
-    letter-spacing: -1px;
-  }
+
+    ion-tab-bar ion-slide {
+      letter-spacing: -1px!important;
+    }
+    ion-tab-bar ion-label {
+      letter-spacing: -1px!important;
+      padding-right: 5px;
+    }
+    ion-tab-bar ion-icon {
+      padding-right: 5px;
+    }
+    ion-tab-bar ion-card {
+      letter-spacing: -1px!important;
+    }
+    ion-tab-bar ion-button {
+      letter-spacing: -1px!important;
+    }
+    ion-tab-bar ion-text {
+      letter-spacing: -1px!important;
+    }
   .product-component {
     ion-item {
       #list-heart-icon {
@@ -183,6 +188,9 @@ ion-content {
         }
       }
     }
+  }
+  .product-component ion-card {
+    letter-spacing: -1px;
   }
 }
 app-product {

@@ -12,7 +12,25 @@ img {
   left: 55%;
 }
 [dir='rtl'] {
-  ion-label {
+  ion-label b {
+    letter-spacing: -1px!important;
+  }
+}
+
+[dir='rtl'] {
+  ion-tab-bar ion-slide {
+    letter-spacing: -1px!important;
+  }
+  ion-tab-bar ion-label {
+    letter-spacing: -1px!important;
+  }
+  ion-tab-bar ion-card {
+    letter-spacing: -1px!important;
+  }
+  ion-tab-bar ion-button {
+    letter-spacing: -1px!important;
+  }
+  ion-tab-bar ion-text {
     letter-spacing: -1px!important;
   }
 }
